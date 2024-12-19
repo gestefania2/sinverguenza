@@ -1,0 +1,2 @@
+# sinverguenza
+Juego de cartas
