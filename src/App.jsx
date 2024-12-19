@@ -1,10 +1,27 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import getAllCategories  from './api/apiCategories.js';
+import getQuestionAndAnswerByCategory from './api/apiGame.js';
+
 
 function App() {
   const [count, setCount] = useState(0)
+  useEffect (() => {
+  test();
+  }, [])
+
+
+async function test () {
+  //const result = await getAllCategories();
+  //const result = await getQuestionAndAnswerByCategory(5, 4);
+  console.log (result);
+}
+
+
+
+
 
   return (
     <>
