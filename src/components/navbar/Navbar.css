@@ -1,0 +1,97 @@
+.navbar {
+    position: relative;
+    background-color: white;
+  }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: black;
+    padding:0;
+  } /*hay que insertar el logo*/
+  
+  .hamburger-button {
+    z-index: 50;
+    width: 50px; /* Ancho del botón */
+    height: 50px; /* Alto del botón */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: black;
+  }
+  
+  .hamburger-line {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    color: rgb(0, 0, 0);
+    background-color: black;
+    margin: 3px 0; /* Ajusta el espaciado */
+    transition: all 0.3s ease;
+    transform-origin: center; /* Punto de giro: centro */
+  }
+  
+  .line-1-active {
+    transform: rotate(45deg) translate(10px, 10px);
+    background-color: white;
+   
+  }
+  
+  .line-2-active {
+    opacity: 0;
+  }
+  
+  .line-3-active {
+    transform: rotate(-45deg) translate(2px, -2px);
+    background-color: white;
+
+  }
+  
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: slideIn 0.3s ease-out;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  .menu-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .menu-item {
+    color: white;
+    font-size: 1.3rem;
+    margin: 1rem 0;
+    text-decoration: none;
+    text-align: left; /* Alinear el texto a la izquierda */
+    display: block; /* Asegurar que el texto ocupe toda la línea */
+    padding-left: 1.6rem; /* Agregar margen interno a la izquierda */
+  }
+  
