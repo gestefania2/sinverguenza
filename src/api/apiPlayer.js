@@ -16,7 +16,7 @@ async function login(body) {
     }
 }
 
-export async function logout() {
+async function logout() {
     try {
         if (localStorage.getItem("authToken") != null) {
             localStorage.removeItem("authToken");
@@ -62,7 +62,7 @@ async function checkAuthToken() {
     } catch (error) {
         console.error("Error al verificar el token:", error);
     }
-}
+} //OK
 
 
 

@@ -1,5 +1,6 @@
 import fetchData from "./apiCallController.js"
 
+
 async function getAllCategories() {
     try {
       const category= await fetchData("/category/list");
@@ -11,7 +12,6 @@ async function getAllCategories() {
   } //ok
   
  
-
 
 
 export default getAllCategories;
