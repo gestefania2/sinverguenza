@@ -1,0 +1,129 @@
+.home-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    border: 8px solid black;
+    padding: 2rem;
+    font-family: sans-serif;
+    overflow: hidden;
+  }
+  
+  .home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+  
+  .home-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: -0.05em;
+  }
+  
+  .menu-button {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .main-content {
+    position: relative;
+    height: 75%;
+  }
+  
+  .color-block {
+    position: absolute;
+    transition: transform 0.3s ease;
+  }
+  
+  .color-block:hover {
+    transform: scale(1.1);
+  }
+  
+  .pink-block {
+    top: 5rem;
+    left: 10rem;
+    width: 8rem;
+    height: 3rem;
+    background-color: #EC4899;
+    transform: rotate(-12deg);
+  }
+  
+  .purple-block {
+    top: 10rem;
+    right: 5rem;
+    width: 6rem;
+    height: 4rem;
+    background-color: #7C3AED;
+    transform: rotate(45deg);
+  }
+  
+  .green-block {
+    bottom: 8rem;
+    left: 6rem;
+    width: 7rem;
+    height: 3rem;
+    background-color: #10B981;
+    transform: rotate(-6deg);
+  }
+  
+  .orange-block {
+    top: 15rem;
+    right: 10rem;
+    width: 5rem;
+    height: 5rem;
+    background-color: #F97316;
+    transform: rotate(12deg);
+  }
+  
+  .text-content {
+    position: relative;
+    z-index: 10;
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .artist-name {
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .artist-name:first-child {
+    font-size: 2.5rem;
+  }
+  
+  .artist-name:hover {
+    transform: rotate(0deg) !important;
+  }
+  
+  .rotate-neg-3 { transform: rotate(-3deg); }
+  .rotate-pos-2 { transform: rotate(2deg); }
+  .rotate-neg-1 { transform: rotate(-1deg); }
+  .rotate-pos-3 { transform: rotate(3deg); }
+  .rotate-neg-2 { transform: rotate(-2deg); }
+  .rotate-pos-1 { transform: rotate(1deg); }
+  
+  @media (max-width: 768px) {
+    .home-container {
+      padding: 1rem;
+    }
+  
+    .text-content {
+      gap: 1.5rem;
+    }
+  
+    .artist-name {
+      font-size: 1.5rem;
+    }
+  
+    .artist-name:first-child {
+      font-size: 2rem;
+    }
+  }

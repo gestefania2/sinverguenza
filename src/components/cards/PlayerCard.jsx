@@ -1,6 +1,9 @@
 import Button, { handleUpdate, handleDelete } from '../buttons/GenericButton';
+import { useNavigate } from 'react-router-dom';
 
 function PlayerCard({ card_id, type, text, category_name }) {
+    const navigate = useNavigate();
+
     return (
         <div className="player-card">
             <h1>#{card_id}</h1>
@@ -20,7 +23,10 @@ function PlayerCard({ card_id, type, text, category_name }) {
                 </Button>
             </div>
 
-            <a href="#">volver</a>
+            <a href="#" onClick={(e) => {
+                e.preventDefault();
+                navigate(-1); // quizas aquí tenga que poner la ruta de la página que quiera exactamente (mis cartas)
+            }}>volver</a>
 
             <p>{category_name}</p>
         </div>

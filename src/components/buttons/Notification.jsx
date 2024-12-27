@@ -6,4 +6,6 @@ function Notification({ message, isError }) {
 
     );
 }
-//utilizar para el logeo y registro 
+//utilizar para el logeo y registro un modal
+
+export default Notification;

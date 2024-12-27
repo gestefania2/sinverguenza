@@ -44,7 +44,7 @@
   
   .line-1-active {
     transform: rotate(45deg) translate(10px, 10px);
-    background-color: white;
+    background-color: rgb(196, 12, 12);
    
   }
   
@@ -54,7 +54,7 @@
   
   .line-3-active {
     transform: rotate(-45deg) translate(2px, -2px);
-    background-color: white;
+    background-color: rgb(196, 12, 12);
 
   }
   
