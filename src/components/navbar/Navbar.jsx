@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="navbar-container">
         {/* Logo - siempre visible */}
         <Link to="/" className="logo">Sinvergüenza</Link>
-        
+
         <button onClick={toggleMenu} className="hamburger-button">
           <span className={`hamburger-line ${isOpen ? 'line-1-active' : ''}`}></span>
           <span className={`hamburger-line ${isOpen ? 'line-2-active' : ''}`}></span>
@@ -37,7 +37,10 @@ const Navbar = () => {
                   <Link to="/sinverguenza" className="menu-item" onClick={toggleMenu}>
                     JUGAR A SER "SINVERGÜENZA"
                   </Link>
-                  
+                  <Link to="/instrucciones" className="menu-item" onClick={toggleMenu}>
+                    INSTRUCCIONES
+                  </Link>
+
                 </>
               ) : (
                 // Menú para usuarios autenticados
@@ -51,8 +54,11 @@ const Navbar = () => {
                   <Link to="/miscartas" className="menu-item" onClick={toggleMenu}>
                     JUGAR "MIS CARTAS"
                   </Link>
-                  <Link to="/juegosinverguenza" className="menu-item" onClick={toggleMenu}>
+                  <Link to="/sinverguenza" className="menu-item" onClick={toggleMenu}>
                     JUGAR A SER "SINVERGÜENZA"
+                  </Link>
+                  <Link to="/instrucciones" className="menu-item" onClick={toggleMenu}>
+                   INSTRUCCIONES
                   </Link>
 
                 </>

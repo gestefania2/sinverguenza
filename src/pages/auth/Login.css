@@ -1,0 +1,94 @@
+@import '../../assets/fonts/fonts.css';
+
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: white;
+}
+
+.login-box {
+    width: 320px;
+    padding: 3rem;
+    border: 1px solid #e5e7eb;
+}
+
+.title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-family: "Yeseva One";
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-container {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.form-container .generic-button{
+    border-radius: 0px;
+}
+
+
+.input-field {
+    width: 100%;
+    padding-bottom: 0.5rem;
+    padding-left:0;
+    color: #4b5563;
+    border: none;
+}
+
+.input-field:focus {
+    outline: none;
+}
+
+
+.footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #4b5563;
+}
+
+/* Colores para las letras del título */
+.red {
+    color: #ef4444;
+}
+
+.yellow {
+    color: #eab308;
+}
+
+.blue {
+    color: #3b82f6;
+}
+
+.green {
+    color: #22c55e;
+}
+
+.purple {
+    color: #a855f7;
+}
+
+.pink {
+    color: #ec4899;
+}
+
+.indigo {
+    color: #6366f1;
+}
+
+.orange {
+    color: #f97316;
+}
+
+.teal {
+    color: #14b8a6;
+}
+
