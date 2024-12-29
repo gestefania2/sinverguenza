@@ -7,20 +7,20 @@ const RegisterForm = () => {
             <form className="register-form">
                 <h1 className="title">
                     <span style={{ color: '#000000' }}>c</span>
-                    <span style={{ color: '#FFD700' }}>r</span>
+                    <span style={{ color: '#dbb736' }}>r</span>
                     <span style={{ color: '#000000' }}>e</span>
-                    <span style={{ color: '#008000' }}>a</span>
+                    <span style={{ color: '#dc429e' }}>a</span>
                     <span style={{ color: '#000000' }}>r</span>
                     {' '}
                     <span style={{ color: '#000000' }}>m</span>
-                    <span style={{ color: '#FF69B4' }}>i</span>
+                    <span style={{ color: '#5e17eb' }}>i</span>
                     <br />
                     <span style={{ color: '#000000' }}>c</span>
-                    <span style={{ color: '#4B0082' }}>u</span>
+                    <span style={{ color: '#5e17eb' }}>u</span>
                     <span style={{ color: '#000000' }}>e</span>
-                    <span style={{ color: '#FF1493' }}>n</span>
+                    <span style={{ color: '#21a41d' }}>n</span>
                     <span style={{ color: '#000000' }}>t</span>
-                    <span style={{ color: '#008000' }}>a</span>
+                    <span style={{ color: '#dbb736' }}>a</span>
                 </h1>
 
                 <input
