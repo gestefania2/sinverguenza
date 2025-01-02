@@ -1,6 +1,6 @@
-/* pages/PlayerSelection.css */
 import React from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './PlayerSelection.css';
 
@@ -15,30 +15,31 @@ const PlayerSelection = () => {
 
   return (
     <div className="player-selection-container">
-      <h1 className="title">sinvergüenza</h1>
-      
+
       <div className="content">
-        <h2 className="subtitle">
-          <span className="purple">n</span>
-          <span className="blue">ú</span>
-          <span className="yellow">m</span>
-          <span className="red">e</span>
-          <span className="green">r</span>
-          <span className="purple">o</span>
+        <h1 className="title">
+          <span style={{ color: '#000000' }}>n</span>
+          <span style={{ color: '#dbb736' }}>ú</span>
+          <span style={{ color: '#000000' }}>m</span>
+          <span style={{ color: '#dc429e' }}>e</span>
+          <span style={{ color: '#000000' }}>r</span>
+          <span style={{ color: '#5e17eb' }}>o</span>
           {" "}
-          <span className="blue">d</span>
-          <span className="yellow">e</span>
+          <span style={{ color: '#000000' }}>d</span>
+          <span style={{ color: '#21a41d' }}>e</span>
           <br />
-          <span className="red">j</span>
-          <span className="green">u</span>
-          <span className="purple">g</span>
-          <span className="blue">a</span>
-          <span className="yellow">d</span>
-          <span className="red">o</span>
-          <span className="green">r</span>
-          <span className="purple">e</span>
-          <span className="blue">s</span>
-        </h2>
+          <span style={{ color: '#000000' }}>j</span>
+          <span style={{ color: '#21a41d' }}>u</span>
+          <span style={{ color: '#000000' }}>g</span>
+          <span style={{ color: '#5e17eb' }}>a</span>
+          <span style={{ color: '#000000' }}>d</span>
+          <span style={{ color: '#dc429e' }}>o</span>
+          <span style={{ color: '#000000' }}>r</span>
+          <span style={{ color: '#dbb736' }}>e</span>
+          <span style={{ color: '#000000' }}>s</span>
+
+
+        </h1>
 
         <div className="select-container">
           <select
@@ -52,6 +53,12 @@ const PlayerSelection = () => {
               </option>
             ))}
           </select>
+        </div>
+        <div className='button-siguiente'>
+          <Link to="/selecciondecategoria" className="next-link" >
+            siguiente
+          </Link>
+
         </div>
       </div>
     </div>

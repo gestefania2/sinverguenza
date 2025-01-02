@@ -1,71 +1,83 @@
 .player-selection-container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    background-color: white;
-  }
-  
-  .title {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    font-weight: bold;
-  }
-  
-  .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .subtitle {
-    font-size: 2rem;
-    text-align: center;
-    line-height: 1.2;
-    margin-bottom: 2rem;
-  }
-  
-  /* Colores para las letras */
-  .purple { color: #9333ea; }
-  .blue { color: #2563eb; }
-  .yellow { color: #facc15; }
-  .red { color: #ef4444; }
-  .green { color: #22c55e; }
-  
-  .select-container {
-    width: 100%;
-    border: 1px solid #e5e7eb;
-    border-radius: 4px;
-    padding: 0.5rem;
-  }
-  
-  .player-select {
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    text-align: center;
-    appearance: none;
-    outline: none;
-  }
-  
-  .player-select option {
-    text-align: center;
-  }
-  
-  /* Añade una flecha personalizada para el select */
-  .select-container::after {
-    content: "▼";
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    font-size: 0.8rem;
-    color: #6b7280;
-  }
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: white;
+  justify-content: flex-start;
+  padding-top: 4rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  font-weight: normal;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+}
+
+.subtitle {
+  font-size: 2.5rem;
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+  font-weight: normal;
+  letter-spacing: -0.5px;
+}
+
+
+.select-container {
+  width: 100%;
+  max-width: 200px;
+  position: relative;
+  margin-top: 1rem;
+}
+
+.player-select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: center;
+  appearance: none;
+  outline: none;
+  border: 1px solid #000000;
+
+}
+
+.player-select option {
+  text-align: center;
+  padding: 0.5rem;
+}
+
+/* Remove default arrow */
+.player-select::-ms-expand {
+  display: none;
+}
+
+/* Custom arrow styling */
+.select-container::after {
+  content: "▼";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.button-siguiente {
+  margin-top: 2rem;
+}

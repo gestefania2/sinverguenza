@@ -1,74 +1,104 @@
 .container {
-    min-height: 100vh;
-    padding: 2rem 1rem;
-  }
-  
-  .card {
-    max-width: 42rem;
-    margin: 0 auto;
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 1.5rem;
-  }
-  
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  
-  .back-link {
-    color: #4b5563;
-    text-decoration: none;
-    font-size: 0.875rem;
-  }
-  
-  .back-link:hover {
-    color: #1f2937;
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-  
-  .title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    text-align: left;
-    color: #1f2937;
-    margin-bottom: 1.5rem;
-  }
-  
-  .subtitle {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #374151;
-    margin-bottom: 1rem;
-  }
-  
-  .instructions-list {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-  }
-  
-  .instruction-item {
-    color: #374151;
-    line-height: 1.625;
-    margin-bottom: 1rem;
-  }
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
 
-  .button-jugamos .generic-button {
-   color: white;
-   background-color: black;
-   border-radius: 0;
-   font-weight: bold;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 100%;
-   font-size: 20px;
-  }
+/* Franja rosa */
+.container::before {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: -11%;
+  left: -20%;
+  background-color: rgba(220, 66, 158, 0.7); 
+  transform: rotate(-15deg);
+  z-index: -2;
+}
+
+/* Franja verde */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 40%;
+  bottom: 15%;
+  right: 10%;
+  background-color: rgba(219, 183, 54, 0.7
+  ); 
+  transform: rotate(75deg);
+  z-index: -2;
+}
+
+
+.card {
+  max-width: 42rem;
+  margin: 0 auto;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  position: relative;
+  z-index: 10;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.back-link {
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.back-link:hover {
+  color: #1f2937;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.title-instructions {
+  font-size: 1.25rem;
+  text-align: left;
+  color: #1f2937;
+  margin-bottom: 1.5rem;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 1rem;
+}
+
+.instructions-list {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.instruction-item {
+  color: #374151;
+  line-height: 1.625;
+  margin-bottom: 1rem;
+}
+
+.button-jugamos .generic-button {
+  color: white;
+  background-color: black;
+  border-radius: 0;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 20px;
+}

@@ -3,11 +3,11 @@ import './Instructions.css';
 import Button from '../../components/buttons/GenericButton';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import AnimatedArrows from '../../components/animations/AnimatedArrows';
 
 
 const Instructions = () => {
     const navigate = useNavigate();
-
     const handleClick = () => {
         // Cambia '/ruta-destino' por la ruta a la que quieres navegar
         navigate('/selecciondejugadores');
@@ -28,7 +28,7 @@ const Instructions = () => {
 
                 {/* Main content */}
                 <div>
-                    <h2 className="title">
+                    <h2 className="title-instrucctions">
                         INSTRUCCIONES DE JUEGO
                     </h2>
 
@@ -77,6 +77,7 @@ const Instructions = () => {
                             ¿sinvergüenceamos?
 
                         </Button>
+                        <AnimatedArrows /> 
                     </div>
 
 

@@ -1,0 +1,75 @@
+.welcome-container {
+    max-width: 100%;
+    min-height: 100vh;
+    background-color: white;
+    font-family: Arial, sans-serif;
+    position: relative;
+  }
+  
+  .welcome-content {
+    padding: 1rem;
+    padding-top: 60px; /* Ajusta esto según la altura de tu Navbar */
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .color-picker {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .color-options {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+  
+  .color-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .color-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .game-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+  
+  .game-text p {
+    margin: 0.5rem 0;
+  }
+  
+  .brand {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+  
+  /* Asegúrate de que el contenido no se solape con el navbar */
+  @media screen and (max-height: 600px) {
+    .welcome-content {
+      padding-top: 70px;
+    }
+  }

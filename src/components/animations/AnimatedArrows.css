@@ -1,0 +1,44 @@
+.arrows-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .arrow {
+    font-size: 2.5rem;
+    animation: float 2s infinite;
+  }
+  
+  .arrow-left {
+    transform: rotate(45deg);
+  }
+  
+  .arrow-center {
+    transform: rotate(0deg);
+  }
+  
+  .arrow-right {
+    transform: rotate(-45deg);
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(var(--rotation));
+    }
+    50% {
+      transform: translateY(-15px) rotate(var(--rotation));
+    }
+  }
+  
+  .arrow-left {
+    --rotation: 45deg;
+  }
+  
+  .arrow-center {
+    --rotation: 0deg;
+  }
+  
+  .arrow-right {
+    --rotation: -45deg;
+  }

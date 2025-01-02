@@ -1,74 +1,55 @@
-import './Navbar.css';
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  // Ejemplo de verificación de autenticación - ajusta según tu lógica
-  const isAuthenticated = localStorage.getItem('token') !== null;
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+import Navbar from '../../components/navbar/Navbar';
+import HelloPlayer from '../../components/player_profile/HelloPlayer';
+import '../../pages/user_home/Welcome.css';
+const Welcome = () => {
+  const [textColor, setTextColor] = useState('#5e17eb'); // Default purple color
+  
+  const colorOptions = [
+    { name: 'Yellow', value: '#dbb736' },
+    { name: 'Blue', value: '#5e17eb' },
+    { name: 'Green', value: '#21a41d' },
+    { name: 'Pink', value: '#dc429e' }
+  ];
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        {/* Logo - siempre visible */}
-        <Link to="/" className="logo">Sinvergüenza</Link>
+    <div className="welcome-container">
+      <Navbar />
+      <div className="welcome-content">
+        <div className="header">
+          <HelloPlayer />
+        </div>
 
-        <button onClick={toggleMenu} className="hamburger-button">
-          <span className={`hamburger-line ${isOpen ? 'line-1-active' : ''}`}></span>
-          <span className={`hamburger-line ${isOpen ? 'line-2-active' : ''}`}></span>
-          <span className={`hamburger-line ${isOpen ? 'line-3-active' : ''}`}></span>
-        </button>
-
-        {/* Menú condicional */}
-        {isOpen && (
-          <div className="menu-overlay">
-            <div className="menu-content">
-              {!isAuthenticated ? (
-                // Menú para usuarios no autenticados
-                <>
-                  <Link to="/login" className="menu-item" onClick={toggleMenu}>
-                    LOGIN
-                  </Link>
-                  <Link to="/sinverguenza" className="menu-item" onClick={toggleMenu}>
-                    JUGAR A SER "SINVERGÜENZA"
-                  </Link>
-                  <Link to="/instrucciones" className="menu-item" onClick={toggleMenu}>
-                    INSTRUCCIONES
-                  </Link>
-
-                </>
-              ) : (
-                // Menú para usuarios autenticados
-                <>
-                  <Link to="/miperfil" className="menu-item" onClick={toggleMenu}>
-                    MI PERFIL
-                  </Link>
-                  <Link to="/miscartas" className="menu-item" onClick={toggleMenu}>
-                    MIS CARTAS/CATEGORÍAS
-                  </Link>
-                  <Link to="/miscartas" className="menu-item" onClick={toggleMenu}>
-                    JUGAR "MIS CARTAS"
-                  </Link>
-                  <Link to="/sinverguenza" className="menu-item" onClick={toggleMenu}>
-                    JUGAR A SER "SINVERGÜENZA"
-                  </Link>
-                  <Link to="/instrucciones" className="menu-item" onClick={toggleMenu}>
-                   INSTRUCCIONES
-                  </Link>
-
-                </>
-              )}
+        <div className="content" style={{ color: textColor }}>
+          <div className="color-picker">
+            <p>Selecciona un color:</p>
+            <div className="color-options">
+              {colorOptions.map((color) => (
+                <button
+                  key={color.name}
+                  className="color-button"
+                  style={{ backgroundColor: color.value }}
+                  onClick={() => setTextColor(color.value)}
+                  aria-label={`Select ${color.name}`}
+                />
+              ))}
             </div>
           </div>
-        )}
+
+          <div className="game-text">
+            <p>¿JUGAMOS</p>
+            <p>A SER UN POCO</p>
+            <p>SINVERGÜENZAS?</p>
+          </div>
+
+          <AnimatedArrows />
+
+          <p className="brand">sinvergüenza</p>
+        </div>
       </div>
-    </nav>
+    </div>
   );
 };
 
-export default Navbar;
+export default Welcome;
