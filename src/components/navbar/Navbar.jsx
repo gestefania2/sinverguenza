@@ -1,11 +1,26 @@
-import React from 'react';
-import { useState } from 'react';
-import Navbar from '../../components/navbar/Navbar';
-import HelloPlayer from '../../components/player_profile/HelloPlayer';
-import '../../pages/user_home/Welcome.css';
-const Welcome = () => {
-  const [textColor, setTextColor] = useState('#5e17eb'); // Default purple color
-  
+import './Navbar.css';
+import React, { useState, createContext, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
+// Create a context for the color
+export const ColorContext = createContext();
+
+export const ColorProvider = ({ children }) => {
+  const [textColor, setTextColor] = useState('#5e17eb');
+  return (
+    <ColorContext.Provider value={{ textColor, setTextColor }}>
+      {children}
+    </ColorContext.Provider>
+  );
+};
+
+const Navbar = () => {
+  const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
+  const isAuthenticated = localStorage.getItem('authToken') !== null;
+  const { textColor, setTextColor } = useContext(ColorContext);
+
   const colorOptions = [
     { name: 'Yellow', value: '#dbb736' },
     { name: 'Blue', value: '#5e17eb' },
@@ -13,43 +28,85 @@ const Welcome = () => {
     { name: 'Pink', value: '#dc429e' }
   ];
 
-  return (
-    <div className="welcome-container">
-      <Navbar />
-      <div className="welcome-content">
-        <div className="header">
-          <HelloPlayer />
-        </div>
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
-        <div className="content" style={{ color: textColor }}>
-          <div className="color-picker">
-            <p>Selecciona un color:</p>
-            <div className="color-options">
-              {colorOptions.map((color) => (
-                <button
-                  key={color.name}
-                  className="color-button"
-                  style={{ backgroundColor: color.value }}
-                  onClick={() => setTextColor(color.value)}
-                  aria-label={`Select ${color.name}`}
-                />
-              ))}
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('authPlayerId');
+  };
+
+  return (
+    <nav className="navbar">
+      <div className="navbar-container">
+        <Link to="/" className="logo">Sinvergüenza</Link>
+
+        <button onClick={toggleMenu} className="hamburger-button">
+          <span className={`hamburger-line ${isOpen ? 'line-1-active' : ''}`}></span>
+          <span className={`hamburger-line ${isOpen ? 'line-2-active' : ''}`}></span>
+          <span className={`hamburger-line ${isOpen ? 'line-3-active' : ''}`}></span>
+        </button>
+
+        {isOpen && (
+          <div className="menu-overlay">
+            <div className="menu-content">
+              {!isAuthenticated ? (
+                <>
+                  <Link to="/login" className="menu-item" onClick={toggleMenu}>
+                    LOGIN
+                  </Link>
+                  <Link to="/selecciondejugadores" className="menu-item" onClick={toggleMenu}>
+                    JUGAR A SER "SINVERGÜENZA"
+                  </Link>
+                  <Link to="/instrucciones" className="menu-item" onClick={toggleMenu}>
+                    INSTRUCCIONES
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <div className="color-picker menu-section">
+                    <div className="color-options">
+                      {colorOptions.map((color) => (
+                        <button
+                          key={color.name}
+                          className="color-button"
+                          style={{ backgroundColor: color.value }}
+                          onClick={() => setTextColor(color.value)}
+                          aria-label={`Select ${color.name}`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <Link to="/miperfil" className="menu-item" onClick={toggleMenu}>
+                    MI PERFIL
+                  </Link>
+                  <Link to="/miscartas" className="menu-item" onClick={toggleMenu}>
+                    MIS CARTAS/CATEGORÍAS
+                  </Link>
+                  <Link to="/juegomiscartas" className="menu-item" onClick={toggleMenu}>
+                    JUGAR "MIS CARTAS"
+                  </Link>
+                  <Link to="/selecciondejugadores" className="menu-item" onClick={toggleMenu}>
+                    JUGAR A SER "SINVERGÜENZA"
+                  </Link>
+                  <Link to="/instrucciones" className="menu-item" onClick={toggleMenu}>
+                    INSTRUCCIONES
+                  </Link>
+                  <Link to="/" className="menu-item" onClick={() => {
+                    handleLogout();
+                    toggleMenu();
+                  }}>
+                    CERRAR SESIÓN
+                  </Link>
+                </>
+              )}
             </div>
           </div>
-
-          <div className="game-text">
-            <p>¿JUGAMOS</p>
-            <p>A SER UN POCO</p>
-            <p>SINVERGÜENZAS?</p>
-          </div>
-
-          <AnimatedArrows />
-
-          <p className="brand">sinvergüenza</p>
-        </div>
+        )}
       </div>
-    </div>
+    </nav>
   );
 };
 
-export default Welcome;
+export default Navbar;

@@ -1,22 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../../components/buttons/GenericButton';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { login } from './../../api/apiPlayer';
+import useErrorModal from './../../hooks/useErrorModal.js';
+import ErrorModal from '../../components/modals/ErrorModal';
 import './Login.css';
 
 
 const Login = () => {
-    const navigate =useNavigate();
-    const handleLogin = (e) => {
+    const navigate = useNavigate();
+    const { isOpen, errorMessage, showError, hideError } = useErrorModal();
+    const [formData, setFormData] = useState({
+        player_name: '',
+        email: '',
+        password: ''
+    });
+
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleLogin = async (e) => {
         e.preventDefault();
-        console.log("Login clicked");
-        // Aquí iría tu lógica de login
+        try {
+            const token = await login({
+                email: formData.email,
+                password: formData.password
+            });
+
+            if (token) {
+                navigate('/miperfil');
+            } else {
+                showError('Usuario o contraseña incorrectos');
+            }
+        } catch (error) {
+            showError('Error al iniciar sesión');
+        }
     };
 
     const handleRegistro = (e) => {
         e.preventDefault();
-        console.log("Registro clicked");
-        navigate ('/registro');
-  
+        navigate('/registro');
     };
 
     return (
@@ -50,40 +77,51 @@ const Login = () => {
                     <div className="input-container">
                         <input
                             type="text"
+                            name="email"
                             placeholder="usuario"
                             className="input-field"
+                            value={formData.email}
+                            onChange={handleInputChange}
                         />
                     </div>
 
                     <div className="input-container">
                         <input
                             type="password"
+                            name="password"
                             placeholder="contraseña"
                             className="input-field"
+                            value={formData.password}
+                            onChange={handleInputChange}
                         />
                     </div>
 
-
-                    <Button className="button-login"
+                    <Button
+                        className="button-login"
                         id="login-button"
                         onClick={handleLogin}
                     >
                         LOGIN
-                    </Button >
+                    </Button>
 
-                    <Button className="button-register"
+                    <Button
+                        className="button-register"
                         id="registro-button"
                         onClick={handleRegistro}
                     >
                         REGISTRO
                     </Button>
-
                 </div>
 
                 <div className="footer">
                     sinvergüenza
                 </div>
             </div>
+            <ErrorModal 
+                isOpen={isOpen}
+                message={errorMessage}
+                onClose={hideError}
+            />
         </div>
     );
 };

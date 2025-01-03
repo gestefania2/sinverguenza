@@ -1,17 +1,11 @@
 import React from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import './PlayerSelection.css';
 
 const PlayerSelection = () => {
   const [numberOfPlayers, setNumberOfPlayers] = useLocalStorage('numberOfPlayers', 3);
-  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    navigate('/game');
-  };
 
   return (
     <div className="player-selection-container">

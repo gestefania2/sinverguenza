@@ -1,17 +1,32 @@
 import fetchData from "./apiCallController";
 
+
+async function getPlayer(playerId) {
+    try {
+        const response = await fetchData(`player/${playerId}`, "GET");
+        return response;
+    } catch (error) {
+        if (error.status === 403) {
+            throw new Error("No autorizado para acceder a estos datos");
+        }
+        throw error;
+    }
+}
+
 async function login(body) {
     try {
         const response = await fetchData("login", "POST", body);
-        if (!response || !response.token) {
-            throw new Error("Login fallido, se necesita token");
-        }
-        localStorage.setItem("authToken", response.token);
-        localStorage.setItem("authPlayerId", response.player_id);
-        return response.token;
+        const tokenParts = response.token.split('.');
+        const payload = JSON.parse(atob(tokenParts[1]));
+        console.log("Token payload:", payload); // Añade este log
+        const playerId = payload.player_id;
+        console.log("Player ID:", playerId); // Y este log
 
+        localStorage.setItem("authToken", response.token);
+        localStorage.setItem("authPlayerId", playerId);
+        return response.token;
     } catch (error) {
-        console.error("Error al intentar iniciar sesión:", error);
+        console.error("Error:", error);
         return null;
     }
 }
@@ -50,7 +65,7 @@ async function register(body) {
 async function checkAuthToken() {
     try {
         const token = localStorage.getItem("authToken");
-        const player_id= localStorage.getItem("authPlayerId");
+        const player_id = localStorage.getItem("authPlayerId");
         if (!token) {
             throw new Error("No hay token para verificar");
         }
@@ -62,8 +77,9 @@ async function checkAuthToken() {
     } catch (error) {
         console.error("Error al verificar el token:", error);
     }
-} //OK
+} 
 
 
 
-export { login, logout, register, checkAuthToken };
+
+export { getPlayer, login, logout, register, checkAuthToken };

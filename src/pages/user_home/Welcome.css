@@ -4,6 +4,10 @@
     background-color: white;
     font-family: Arial, sans-serif;
     position: relative;
+    margin-left: 2rem;
+  }
+  .hello-player-name{
+    font-family: 'Yeseva One';
   }
   
   .welcome-content {
@@ -16,14 +20,13 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 2rem;
+  
   }
   
   .content {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    text-align: center;
+    
+   
   }
   
   .color-picker {

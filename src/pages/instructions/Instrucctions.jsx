@@ -9,7 +9,6 @@ import AnimatedArrows from '../../components/animations/AnimatedArrows';
 const Instructions = () => {
     const navigate = useNavigate();
     const handleClick = () => {
-        // Cambia '/ruta-destino' por la ruta a la que quieres navegar
         navigate('/selecciondejugadores');
     };
 

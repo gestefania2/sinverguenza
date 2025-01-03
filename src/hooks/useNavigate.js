@@ -5,9 +5,9 @@ export const useCustomNavigate = () => {
 
   const navigateToHome = () => navigate('/');
   const navigateToPlayerSelection = () => navigate('/selecciondejugadores');
-  //const navigateToGame = () => navigate('/game');
+  const navigateToRegistro = () => navigate('/registro');
   
-  // También puedes añadir una función genérica para navegar a cualquier ruta
+  //Función genérica para navegar a cualquier ruta
   const navigateTo = (path) => navigate(path);
   
   // O funciones con parámetros
@@ -15,8 +15,9 @@ export const useCustomNavigate = () => {
 
   return {
     navigateToHome,
-    navigateTo,
     navigateToPlayerSelection,
-    //navigateToPlayerProfile,
+    navigateToRegistro,
+    navigateTo
+     //navigateToPlayerProfile,
   };
 };
