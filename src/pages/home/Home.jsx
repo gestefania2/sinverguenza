@@ -41,28 +41,39 @@ const Home = () => {
             <div key={index} className="palabra-categoria">{palabra}</div>
           ))}
         </div>
+          <span className='descripcion-home'>" LLEVA EL HUMOR NEGRO <span>
+            <br /></span>Y EL SARCÁSMO AL LÍMITE "</span>
 
           <div className="nombre-categoria">
             {("Vergüenza Ajena").split(' ').map((palabra, index) => (
               <div key={index} className="palabra-categoria">{palabra}</div>
             ))}
           </div>
+          <span className='descripcion-home'>" SITUACIONES EMBARAZOSAS <span>
+            <br /></span>O RIDÍCULAS "</span>
 
           <div className="nombre-categoria">
             {("Sin Filtro").split(' ').map((palabra, index) => (
               <div key={index} className="palabra-categoria">{palabra}</div>
             ))}
           </div>
+          <span className='descripcion-home'>" RESPUESTAS ABSURDAS <span>
+            <br /></span>O PROVOCADORAS "</span>
+
           <div className="nombre-categoria">
             {("Fiesta y Descontrol").split(' ').map((palabra, index) => (
               <div key={index} className="palabra-categoria">{palabra}</div>
             ))}
           </div>
+          <span className='descripcion-home'>" CAOS SOCIAL <span>
+          <br /></span>Y HUMOR NOCTURNO "</span>
           <div className="nombre-categoria">
             {("A Lo Gorrino").split(' ').map((palabra, index) => (
               <div key={index} className="palabra-categoria">{palabra}</div>
             ))}
           </div>
+          <span>" SITUACIONES <span>
+          <br /></span>SUBIDITAS DE TONO "</span>
         </div>
       </div>
     </div>
