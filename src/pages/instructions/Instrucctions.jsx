@@ -4,6 +4,7 @@ import Button from '../../components/buttons/GenericButton';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import AnimatedArrows from '../../components/animations/AnimatedArrows';
+import Navbar from '../../components/navbar/Navbar';
 
 
 const Instructions = () => {
@@ -13,6 +14,8 @@ const Instructions = () => {
     };
 
     return (
+        <>
+        <Navbar />
         <div className="container">
             <div className="card">
                 {/* Header with logo */}
@@ -20,9 +23,6 @@ const Instructions = () => {
                     <Link to="/" className="back-link" >
                         volver
                     </Link>
-                    <h1 className="logo">
-                        sinvergüenza
-                    </h1>
                 </header>
 
                 {/* Main content */}
@@ -84,7 +84,9 @@ const Instructions = () => {
             </div>
 
         </div>
+        </>
     );
 };
+
 
 export default Instructions;

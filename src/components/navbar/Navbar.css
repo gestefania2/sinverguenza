@@ -1,12 +1,13 @@
 .navbar {
   position: relative;
-  background-color: white;
-
+  background-color: transparent;
 }
 
 .navbar-container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
   padding-top: 30px;
   padding-bottom: 30px;
   margin-left: 20px;
