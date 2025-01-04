@@ -40,7 +40,13 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="logo">Sinvergüenza</Link>
+        <Link to="/" >
+          <img
+            className='logo'
+            src="/logo_negro_s.png"
+            alt="Sinvergüenza"
+          />
+          </Link>
 
         <button onClick={toggleMenu} className="hamburger-button">
           <span className={`hamburger-line ${isOpen ? 'line-1-active' : ''}`}></span>
