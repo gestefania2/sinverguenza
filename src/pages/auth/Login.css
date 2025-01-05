@@ -11,7 +11,6 @@
 .login-box {
     width: 320px;
     padding: 3rem;
-    border: 1px solid #e5e7eb;
 }
 
 .title {
@@ -20,7 +19,7 @@
     text-align: left;
     font-family: "Yeseva One";
     font-size: 30px;
-    
+
 }
 
 .form-container {
@@ -30,14 +29,14 @@
 }
 
 
-.form-container .generic-button{
+.form-container .generic-button {
     border-radius: 0px;
 }
 
 
 .input-field {
     width: 100%;
-    padding-left:0;
+    padding-left: 0;
     color: #4b5563;
     border: none;
     padding-bottom: 0.3rem;
@@ -49,9 +48,15 @@
 }
 
 
-.footer {
-    text-align: center;
-    color: #666;
-    margin-top: 1rem;
-    font-size: 0.9rem;
+.footer-logo {
+    display: flex;
+    justify-content: center;
+
   }
+  
+  .login-logo {
+    object-fit: contain; /* mantiene las proporciones */
+    height: 20px;
+    margin-top: 90px;
+
+}

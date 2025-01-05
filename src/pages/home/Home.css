@@ -1,13 +1,22 @@
+.home-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* cambiado de height a min-height */
+  overflow: hidden;
+}
+
+
 .home-container {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh; /* cambiado de height a min-height */
   background-color: white;
   border: 8px solid black;
   padding: 2rem;
   font-family: sans-serif;
   overflow: hidden;
 }
+
 
 .home-header {
   display: flex;
@@ -25,34 +34,36 @@
 
 .main-content {
   position: relative;
-  height: 75%;
+  min-height: 100%; /* cambiado de height a min-height */
+  overflow: hidden;
+  padding-top: 80px;
 }
+
 
 .color-block {
   position: absolute;
   transition: transform 0.3s ease;
 }
 
-.color-block:hover {
-  transform: scale(1.1);
-}
 
 .pink-block {
   top: 5rem;
   left: 10rem;
   width: 8rem;
   height: 3rem;
-  background-color: #EC4899;
+  background-color: #e6007e;
   transform: rotate(-12deg);
+  animation: floatPink 15s ease-in-out infinite;
 }
 
+
 .purple-block {
-  top: 10rem;
-  right: 5rem;
-  width: 6rem;
+  width: 8rem;
   height: 4rem;
-  background-color: #7C3AED;
+  border-radius: 8rem 8rem 0 0;
+  background-color: #5e17eb;
   transform: rotate(45deg);
+  animation: floatPurple 18s ease-in-out infinite
 }
 
 .green-block {
@@ -60,8 +71,9 @@
   left: 6rem;
   width: 7rem;
   height: 3rem;
-  background-color: #10B981;
+  background-color: #21a41d;
   transform: rotate(-6deg);
+  animation: floatGreen 20s ease-in-out infinite;
 }
 
 .orange-block {
@@ -69,8 +81,191 @@
   right: 10rem;
   width: 5rem;
   height: 5rem;
-  background-color: #F97316;
+  background-color: #dbb736;
   transform: rotate(12deg);
+  animation: floatOrange 17s ease-in-out infinite;
+}
+
+@keyframes floatPink {
+  0% {
+    transform: translate(0, 0) rotate(-12deg);
+  }
+  25% {
+    transform: translate(-200px, 100px) rotate(45deg);
+  }
+  50% {
+    transform: translate(150px, -100px) rotate(-90deg);
+  }
+  75% {
+    transform: translate(200px, 80px) rotate(180deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-12deg);
+  }
+}
+
+@keyframes floatPurple {
+  0% {
+    transform: translate(0, 0) rotate(45deg);
+  }
+  33% {
+    transform: translate(-250px, -100px) rotate(180deg);
+  }
+  66% {
+    transform: translate(200px, 100px) rotate(-90deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(45deg);
+  }
+}
+
+@keyframes floatGreen {
+  0% {
+    transform: translate(0, 0) rotate(-6deg);
+  }
+  30% {
+    transform: translate(300px, -100px) rotate(90deg);
+  }
+  60% {
+    transform: translate(-200px, 80px) rotate(-180deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-6deg);
+  }
+}
+
+@keyframes floatOrange {
+  0% {
+    transform: translate(0, 0) rotate(12deg);
+  }
+  25% {
+    transform: translate(-150px, -100px) rotate(180deg);
+  }
+  50% {
+    transform: translate(250px, 80px) rotate(-90deg);
+  }
+  75% {
+    transform: translate(-200px, 90px) rotate(45deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(12deg);
+  }
+}
+
+.blue-block {
+  border-radius: 50%;
+  top: 8rem;
+  left: 15rem;
+  width: 6rem;
+  height: 6rem;
+  background-color: #21a41d;
+  transform: rotate(30deg);
+  animation: floatBlue 16s ease-in-out infinite;
+}
+
+.yellow-block {
+  bottom: 12rem;
+  right: 8rem;
+  width: 7rem;
+  height: 4rem;
+  background-color: #FBBF24;
+  transform: rotate(-15deg);
+  animation: floatYellow 19s ease-in-out infinite;
+}
+
+.red-block {
+  border-radius: 50%;
+  top: 20rem;
+  left: 20rem;
+  width: 5rem;
+  height: 5rem;
+  background-color: #EF4444;
+  transform: rotate(60deg);
+  animation: floatRed 21s ease-in-out infinite;
+}
+
+.cyan-block {
+  bottom: 15rem;
+  left: 25rem;
+  width: 8rem;
+  height: 3rem;
+  background-color: #06B6D4;
+  transform: rotate(-25deg);
+  animation: floatCyan 17s ease-in-out infinite;
+}
+
+/* Nuevas animaciones */
+@keyframes floatBlue {
+  0% {
+    transform: translate(0, 0) rotate(30deg);
+  }
+  30% {
+    transform: translate(-300px, 90px) rotate(180deg);
+  }
+  60% {
+    transform: translate(200px, -100px) rotate(-90deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(30deg);
+  }
+}
+
+@keyframes floatYellow {
+  0% {
+    transform: translate(0, 0) rotate(-15deg);
+  }
+  25% {
+    transform: translate(250px, -100px) rotate(90deg);
+  }
+  50% {
+    transform: translate(-200px, -80px) rotate(180deg);
+  }
+  75% {
+    transform: translate(150px, 90px) rotate(-45deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-15deg);
+  }
+}
+
+@keyframes floatRed {
+  0% {
+    transform: translate(0, 0) rotate(60deg);
+  }
+  33% {
+    transform: translate(-250px, -90px) rotate(-180deg);
+  }
+  66% {
+    transform: translate(300px, 80px) rotate(90deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(60deg);
+  }
+}
+
+@keyframes floatCyan {
+  0% {
+    transform: translate(0, 0) rotate(-25deg);
+  }
+  40% {
+    transform: translate(200px, 90px) rotate(120deg);
+  }
+  70% {
+    transform: translate(-300px, -80px) rotate(-90deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-25deg);
+  }
+}
+/* Bloques que quedarán por debajo del texto */
+.pink-block, .green-block, .yellow-block, .cyan-block{
+  z-index: 5;
+}
+
+/* Bloques que pasarán por encima del texto */
+.purple-block, .orange-block, .blue-block, .red-block{
+  z-index: 15;
+  opacity: 0.7;
 }
 
 .text-content {
@@ -81,17 +276,64 @@
   gap: 2rem;
   margin-left: 30px;
   margin-right: 30px;
-  
+  margin-bottom: 30px;
+  padding-bottom: 2rem; /* añadir padding bottom */
 }
 
-.nombre-categoria {
+.nombre-categoria-negro, 
+.nombre-categoria-ajena,
+.nombre-categoria-filtro, 
+.nombre-categoria-fiesta,
+.nombre-categoria-gorrino{
   font-family: 'Yeseva One';
-  font-size: 30px;
+  font-size: 45px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  line-height: 1.1;
+}
+
+
+.nombre-categoria-ajena {
+ align-items: flex-end;
+
+}
+
+.nombre-categoria-filtro{
+  margin-top: -30px;
+}
+
+.nombre-categoria-gorrino{
+  margin-top: -10px;
+}
+
+
+.nombre-categoria-fiesta{
+  align-items: flex-end;
+}
+
+.descripcion-home-ajena,
+.descripcion-home-negro,
+.descripcion-home-filtro,
+.descripcion-home-fiesta,
+.descripcion-home-gorrino {
+  
+  font-size: 16px;
+  margin-top:-10px;
   line-height: 1.2;
 }
+
+.descripcion-home-ajena {
+  display: block;  /* para que el span ocupe toda la línea */
+  text-align: right;
+  
+}
+.descripcion-home-fiesta {
+  display: block;  /* para que el span ocupe toda la línea */
+  text-align: right;
+  
+}
+
 
 
 .palabra-categoria {

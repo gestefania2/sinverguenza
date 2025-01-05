@@ -8,7 +8,7 @@ const ErrorModal = ({ isOpen, message, onClose }) => {
         <div className="modal-overlay">
             <div className="modal-content">
                 <div className="modal-header">
-                    <h2>Error</h2>
+                    <h2>Ups! Algo salió mal</h2>
                     <button className="close-button" onClick={onClose}>×</button>
                 </div>
                 <div className="modal-body">

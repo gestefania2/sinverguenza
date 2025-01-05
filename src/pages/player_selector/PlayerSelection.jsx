@@ -13,9 +13,9 @@ const PlayerSelection = () => {
       <div className="content">
         <h1 className="title">
           <span style={{ color: '#000000' }}>n</span>
-          <span style={{ color: '#dbb736' }}>ú</span>
+          <span style={{ color: '#FBBF24' }}>ú</span>
           <span style={{ color: '#000000' }}>m</span>
-          <span style={{ color: '#dc429e' }}>e</span>
+          <span style={{ color: '#e6007e' }}>e</span>
           <span style={{ color: '#000000' }}>r</span>
           <span style={{ color: '#5e17eb' }}>o</span>
           {" "}
@@ -27,9 +27,9 @@ const PlayerSelection = () => {
           <span style={{ color: '#000000' }}>g</span>
           <span style={{ color: '#5e17eb' }}>a</span>
           <span style={{ color: '#000000' }}>d</span>
-          <span style={{ color: '#dc429e' }}>o</span>
+          <span style={{ color: '#e6007e' }}>o</span>
           <span style={{ color: '#000000' }}>r</span>
-          <span style={{ color: '#dbb736' }}>e</span>
+          <span style={{ color: '#FBBF24' }}>e</span>
           <span style={{ color: '#000000' }}>s</span>
 
 

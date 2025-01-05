@@ -14,7 +14,7 @@
   height: 50%;
   top: -11%;
   left: -20%;
-  background-color: rgba(220, 66, 158, 0.7); 
+  background-color: rgba(230, 0, 126, 0.7); 
   transform: rotate(-15deg);
   z-index: -2;
 }
@@ -27,9 +27,9 @@
   height: 40%;
   bottom: 15%;
   right: 10%;
-  background-color: rgba(219, 183, 54, 0.7
+  background-color: rgba(250, 191, 36, 0.7
   ); 
-  transform: rotate(75deg);
+  transform: rotate(65deg);
   z-index: -2;
 }
 
@@ -52,13 +52,8 @@
 }
 
 .back-link {
-  color: #4b5563;
-  text-decoration: none;
+  color: #000000;
   font-size: 0.875rem;
-}
-
-.back-link:hover {
-  color: #1f2937;
 }
 
 .logo {

@@ -1,15 +1,19 @@
 import React from 'react';
+import Navbar from '../../components/navbar/Navbar';
+import { Link } from 'react-router-dom';
 import './RegisterForm.css';
 
 const RegisterForm = () => {
     return (
+        <>
+            <Navbar showLogo={false} />
         <div className="register-container">
             <form className="register-form">
                 <h1 className="title">
                     <span style={{ color: '#000000' }}>c</span>
-                    <span style={{ color: '#dbb736' }}>r</span>
+                    <span style={{ color: '#FBBF24' }}>r</span>
                     <span style={{ color: '#000000' }}>e</span>
-                    <span style={{ color: '#dc429e' }}>a</span>
+                    <span style={{ color: '#e6007e' }}>a</span>
                     <span style={{ color: '#000000' }}>r</span>
                     {' '}
                     <span style={{ color: '#000000' }}>m</span>
@@ -20,7 +24,7 @@ const RegisterForm = () => {
                     <span style={{ color: '#000000' }}>e</span>
                     <span style={{ color: '#21a41d' }}>n</span>
                     <span style={{ color: '#000000' }}>t</span>
-                    <span style={{ color: '#dbb736' }}>a</span>
+                    <span style={{ color: '#FBBF24' }}>a</span>
                 </h1>
 
                 <input
@@ -48,11 +52,18 @@ const RegisterForm = () => {
                     CREAR CUENTA
                 </button>
 
-                <div className="footer">
-                    sinverguenza
+                <div className="footer-logo">
+                    <Link to="/" >
+                        <img
+                            className='login-logo'
+                            src="/logo_negro_s.png"
+                            alt="Sinvergüenza"
+                        />
+                    </Link>
                 </div>
             </form>
         </div>
+        </>
     );
 };
 

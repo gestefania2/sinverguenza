@@ -15,7 +15,7 @@ export const ColorProvider = ({ children }) => {
   );
 };
 
-const Navbar = () => {
+const Navbar = ({ showLogo = true }) => {  // Añadida la prop showLogo con valor por defecto true
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const isAuthenticated = localStorage.getItem('authToken') !== null;
@@ -39,14 +39,16 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-container">
-        <Link to="/" >
-          <img
-            className='logo'
-            src="/logo_negro_s.png"
-            alt="Sinvergüenza"
-          />
+  <div className={`navbar-container ${!showLogo ? 'navbar-container--no-logo' : ''}`}>
+        {showLogo && (  // por defecto, muestra el logo si showLogo es verdadero
+          <Link to="/" >
+            <img
+              className='logo'
+              src="/logo_negro_s.png"
+              alt="Sinvergüenza"
+            />
           </Link>
+        )}
 
         <button onClick={toggleMenu} className="hamburger-button">
           <span className={`hamburger-line ${isOpen ? 'line-1-active' : ''}`}></span>
