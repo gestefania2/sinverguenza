@@ -15,15 +15,9 @@ const Instructions = () => {
 
     return (
         <>
-        <Navbar />
+            <Navbar />
         <div className="container">
             <div className="card">
-                {/* Header with logo */}
-                <header className="header">
-                    <Link to="/" className="back-link" >
-                        volver
-                    </Link>
-                </header>
 
                 {/* Main content */}
                 <div>

@@ -14,7 +14,7 @@
   height: 50%;
   top: -11%;
   left: -20%;
-  background-color: rgba(230, 0, 126, 0.7); 
+  background-color: rgba(230, 0, 126, 0.7);
   transform: rotate(-15deg);
   z-index: -2;
 }
@@ -27,8 +27,7 @@
   height: 40%;
   bottom: 15%;
   right: 10%;
-  background-color: rgba(250, 191, 36, 0.7
-  ); 
+  background-color: rgba(250, 191, 36, 0.7);
   transform: rotate(65deg);
   z-index: -2;
 }
@@ -38,7 +37,9 @@
   max-width: 42rem;
   margin: 0 auto;
   border-radius: 0.5rem;
-  padding: 1.5rem;
+  margin-top: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
   position: relative;
   z-index: 10;
 }
