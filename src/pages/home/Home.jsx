@@ -38,6 +38,7 @@ const Home = () => {
         <div className="color-block yellow-block"></div>
         <div className="color-block red-block"></div>
         <div className="color-block cyan-block"></div>
+        <div class="pink-circle-block color-block"></div>
 
         {/* Text content */}
         <div className="text-content"><div className="nombre-categoria-negro">

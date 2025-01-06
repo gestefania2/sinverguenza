@@ -47,8 +47,8 @@
 
 
 .pink-block {
-  top: 5rem;
-  left: 10rem;
+  top: 8rem;
+  left: 15%;
   width: 8rem;
   height: 3rem;
   background-color: #e6007e;
@@ -56,8 +56,9 @@
   animation: floatPink 15s ease-in-out infinite;
 }
 
-
 .purple-block {
+  top: 40%;
+  right: 20%;
   width: 8rem;
   height: 4rem;
   border-radius: 8rem 8rem 0 0;
@@ -67,8 +68,8 @@
 }
 
 .green-block {
-  bottom: 8rem;
-  left: 6rem;
+  bottom: 15%;
+  left: 10%;
   width: 7rem;
   height: 3rem;
   background-color: #21a41d;
@@ -77,14 +78,70 @@
 }
 
 .orange-block {
-  top: 15rem;
-  right: 10rem;
-  width: 5rem;
+  top: 25%;
+  right: 15%;
+  width: 4rem;
   height: 5rem;
-  background-color: #dbb736;
+  background-color: #FBBF24;
   transform: rotate(12deg);
   animation: floatOrange 17s ease-in-out infinite;
 }
+.blue-block {
+  top: 30%;
+  left: 45%;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background-color: #21a41d;
+  transform: rotate(30deg);
+  animation: floatBlue 16s ease-in-out infinite;
+}
+
+.yellow-block {
+  bottom: 25%;
+  right: 25%;
+  width: 6rem;
+  height: 3rem;
+  border-radius: 6rem 6rem 0 0;
+  background-color: #FBBF24;
+  transform: rotate(-15deg);
+  animation: floatYellow 19s ease-in-out infinite;
+}
+
+.red-block {
+  top: 45%;
+  left: 25%;
+  width: 5rem;
+  height: 6rem;
+  background-color: #e6007e;
+  transform: rotate(60deg);
+  animation: floatRed 21s ease-in-out infinite;
+}
+.cyan-block {
+  bottom: 35%;
+  left: 35%;
+  width: 8rem;
+  height: 3rem;
+  background-color: #5e17eb;
+  transform: rotate(-25deg);
+  animation: floatCyan 17s ease-in-out infinite;
+}
+
+
+.pink-circle-block {
+  position: absolute;
+  bottom: 10%;
+  left: 45%;
+  width: 4.5rem;
+  height: 4.5rem;
+  background-color: #e6007e;
+  border-radius: 50%;
+  transform: rotate(30deg);
+  animation: floatPinkCircle 17s ease-in-out infinite;
+  z-index: 5;
+  opacity: 0.8;
+}
+
 
 @keyframes floatPink {
   0% {
@@ -152,49 +209,6 @@
   }
 }
 
-.blue-block {
-  border-radius: 50%;
-  top: 8rem;
-  left: 15rem;
-  width: 6rem;
-  height: 6rem;
-  background-color: #21a41d;
-  transform: rotate(30deg);
-  animation: floatBlue 16s ease-in-out infinite;
-}
-
-.yellow-block {
-  bottom: 12rem;
-  right: 8rem;
-  width: 7rem;
-  height: 4rem;
-  background-color: #FBBF24;
-  transform: rotate(-15deg);
-  animation: floatYellow 19s ease-in-out infinite;
-}
-
-.red-block {
-  border-radius: 50%;
-  top: 20rem;
-  left: 20rem;
-  width: 5rem;
-  height: 5rem;
-  background-color: #EF4444;
-  transform: rotate(60deg);
-  animation: floatRed 21s ease-in-out infinite;
-}
-
-.cyan-block {
-  bottom: 15rem;
-  left: 25rem;
-  width: 8rem;
-  height: 3rem;
-  background-color: #06B6D4;
-  transform: rotate(-25deg);
-  animation: floatCyan 17s ease-in-out infinite;
-}
-
-/* Nuevas animaciones */
 @keyframes floatBlue {
   0% {
     transform: translate(0, 0) rotate(30deg);
@@ -257,16 +271,29 @@
     transform: translate(0, 0) rotate(-25deg);
   }
 }
+
+@keyframes floatPinkCircle {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-100px, -50px) rotate(180deg); }
+  50% { transform: translate(100px, 50px) rotate(360deg); }
+  75% { transform: translate(50px, -100px) rotate(540deg); }
+  100% { transform: translate(0, 0) rotate(720deg); }
+}
 /* Bloques que quedarán por debajo del texto */
-.pink-block, .green-block, .yellow-block, .cyan-block{
+.pink-block, .orange-block, .green-block, .cyan-block{
   z-index: 5;
 }
 
 /* Bloques que pasarán por encima del texto */
-.purple-block, .orange-block, .blue-block, .red-block{
+.yellow-block, .blue-block, .red-block{
   z-index: 15;
-  opacity: 0.7;
+  opacity: 0.6;
 }
+.purple-block{
+  z-index: 15;
+  opacity: 0.8;
+}
+
 
 .text-content {
   position: relative;
@@ -277,7 +304,7 @@
   margin-left: 30px;
   margin-right: 30px;
   margin-bottom: 30px;
-  padding-bottom: 2rem; /* añadir padding bottom */
+  padding-bottom: 1rem; /* añadir padding bottom */
 }
 
 .nombre-categoria-negro, 

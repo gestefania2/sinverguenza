@@ -98,3 +98,13 @@
   width: 100%;
   font-size: 20px;
 }
+
+  @media (min-width: 768px) {
+    .arrows-container-instructions  {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-left: 0px;
+    }
+  }

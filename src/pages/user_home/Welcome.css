@@ -1,78 +1,91 @@
 .welcome-container {
-    max-width: 100%;
-    min-height: 100vh;
-    background-color: white;
-    font-family: Arial, sans-serif;
-    position: relative;
-    margin-left: 2rem;
-  }
-  .hello-player-name{
-    font-family: 'Yeseva One';
-  }
-  
-  .welcome-content {
-    padding: 1rem;
-    padding-top: 60px; /* Ajusta esto según la altura de tu Navbar */
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 2rem;
-  
-  }
-  
-  .content {
-    display: flex;
-    
-   
-  }
-  
-  .color-picker {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  
-  .color-options {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 0.5rem;
-  }
-  
-  .color-button {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 2px solid #ddd;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  
-  .color-button:hover {
-    transform: scale(1.1);
-  }
-  
-  .game-text {
-    font-size: 1.5rem;
-    font-weight: bold;
-    line-height: 1.2;
-  }
-  
-  .game-text p {
-    margin: 0.5rem 0;
-  }
-  
-  .brand {
-    font-size: 1.2rem;
-    font-weight: bold;
+  max-width: 100%;
+  min-height: 100vh;
+  background-color: white;
+  font-family: Arial, sans-serif;
+  position: relative;
+  padding: 30px;
+  padding-top: 80px;
+  padding-bottom: 0px;
+}
+
+.hello-player-name {
+  font-family: 'Yeseva One';
+}
+
+.hello-player p {
+  font-size: 17px;
+}
+
+
+.hello-player p span {
+  font-style: italic;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  position: relative;
+
+}
+
+.content {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+}
+
+.color-picker {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.color-options {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.color-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.color-button:hover {
+  transform: scale(1.1);
+}
+
+
+.game-text {
+  text-align: left;
+  width: 100%;
+}
+
+.game-text p {
+  letter-spacing: 1.8px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 1.3;
+  margin: 0;
+  text-align: left;
+}
+
+.link-aqui {
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .arrows-container {
+    position: static;
+    justify-content: flex-start;
     margin-top: 1rem;
+    margin-left: 2.3rem;
   }
-  
-  /* Asegúrate de que el contenido no se solape con el navbar */
-  @media screen and (max-height: 600px) {
-    .welcome-content {
-      padding-top: 70px;
-    }
-  }
+}

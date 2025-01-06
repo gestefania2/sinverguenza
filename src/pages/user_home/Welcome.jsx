@@ -16,7 +16,7 @@ const Welcome = () => {
                 const tokenParts = token.split('.');
                 const payload = JSON.parse(atob(tokenParts[1]));
                 const playerId = payload.player_id;
-                
+
                 const player = await getPlayer(playerId);
                 setPlayerData(player);
             } catch (error) {
@@ -33,16 +33,11 @@ const Welcome = () => {
                 <div className="hello-player">
                     <h1 className='hello-player-name'>hola, {playerData.player_name}</h1>
                     <p style={{ color: textColor }}>
-                        Bienvenido/a a Sinvergüenza un juego que no te dejará indiferente
+                        Bienvenido/a a Sinvergüenza un juego que no te dejará indiferente... <br />
+                        <span>"NO APTO PARA VERGONZOSOS"</span>
                     </p>
+
                 </div>
-                <button className="menu-button">
-                    <div className="menu-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </button>
             </div>
 
             <div className="content" style={{ color: textColor }}>
@@ -53,7 +48,7 @@ const Welcome = () => {
                 </div>
             </div>
 
-            <div>
+            <div className="arrows-container">
                 <AnimatedArrows />
             </div>
         </div>

@@ -57,7 +57,7 @@ const Instructions = () => {
                                 El ganador de cada partida será el primero en escoger carta y el turno continuará en el sentido de las agujas del reloj.
                             </li>
                             <li className="instruction-item">
-                                Si quieres crear tu propio juego tendrás que logearte o registrarte <Link to="/login">aquí.</Link>
+                                Si quieres crear tu propio juego tendrás que logearte o registrarte <Link className='link-aqui' to="/login">aquí.</Link>
                                 
                             </li>
                         </ul>
@@ -70,7 +70,9 @@ const Instructions = () => {
                             ¿sinvergüenceamos?
 
                         </Button>
+                        <div className="arrows-container-instructions">
                         <AnimatedArrows /> 
+                        </div>
                     </div>
 
 

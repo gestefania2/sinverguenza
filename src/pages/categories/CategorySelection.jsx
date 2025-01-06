@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import fetchData from '../../api/apiCategories.js';
 import { categoryColors } from '../../constants/categoryColors.js';
+import { Link } from 'react-router-dom';
 import './CategorySelection.css';
 
 const CategorySelection = ({ playerId = null }) => {
@@ -14,7 +15,7 @@ const CategorySelection = ({ playerId = null }) => {
       try {
         setIsLoading(true);
         const data = await fetchData("/category/list");
-        
+
         // Asumiendo que tu API devuelve un array de categorías
         const formattedCategories = data.map(category => ({
           name: category.name || category.category_name,
@@ -35,13 +36,13 @@ const CategorySelection = ({ playerId = null }) => {
   }, []);
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === categories.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? categories.length - 1 : prevIndex - 1
     );
   };
@@ -73,13 +74,23 @@ const CategorySelection = ({ playerId = null }) => {
   }
 
   return (
-    <div 
+
+    <div
       className="carousel-container"
-      style={{ 
-        backgroundColor: categoryColors[categories[currentIndex]?.name.toLowerCase()] || '#000000' 
+      style={{
+        backgroundColor: categoryColors[categories[currentIndex]?.name.toLowerCase()] || '#000000'
       }}
     >
-      <button 
+      <div className="category-logo">
+        <Link to="/">
+          <img
+            src="/logo_blanco_s.png"
+            alt="Sinvergüenza"
+            className="logo-image"
+          />
+        </Link>
+      </div>
+      <button
         onClick={prevSlide}
         className="carousel-arrow carousel-arrow-left"
         aria-label="Categoría anterior"
@@ -87,7 +98,7 @@ const CategorySelection = ({ playerId = null }) => {
         ‹
       </button>
 
-      <button 
+      <button
         onClick={nextSlide}
         className="carousel-arrow carousel-arrow-right"
         aria-label="Siguiente categoría"
@@ -102,6 +113,9 @@ const CategorySelection = ({ playerId = null }) => {
         <p className="category-description">
           {categories[currentIndex]?.description}
         </p>
+        <Link to="/selecciondejugadores" className="volver-link">
+          volver
+        </Link>
       </div>
     </div>
   );

@@ -1,0 +1,56 @@
+.question{
+    background-color: black;
+    color: white;
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .header {
+    font-size: 1.5rem;
+    text-align: center;
+    text-transform: lowercase;
+  }
+  
+  .response-list {
+    background-color: white;
+  }
+  .question-title {
+    text-align: center;
+    font-size: 1.2rem;
+    font-style: italic  ;
+    white-space: pre-line;
+    line-height: 1.5;
+    
+  }
+  
+  .plan-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .plan-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 1rem;
+  }
+  
+  .plan-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0.5rem;
+  }
+  
+  .footer {
+    text-align: center;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }

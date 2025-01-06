@@ -8,6 +8,7 @@ import RegisterForm from "../pages/auth/RegisterForm";
 import CategorySelection from "../pages/categories/CategorySelection";
 import Welcome from "../pages/user_home/Welcome";
 import ProtectedRoute from "../components/player_profile/ProtectedRoute";
+import Game from "../pages/game/Game";
 
 const Router = () => {
   return (
@@ -20,6 +21,7 @@ const Router = () => {
           <Route path="/selecciondejugadores" element={<PlayerSelection />} />
           <Route path="/instrucciones" element={<Instructions />} />
           <Route path="/selecciondecategoria" element={<CategorySelection />} />
+          <Route path="/sinverguenza" element={<Game />} />
           <Route 
             path="/miperfil" 
             element={
