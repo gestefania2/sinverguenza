@@ -8,6 +8,7 @@ async function fetchData(pathName, method = 'GET', body = null) {
         console.log("Body complete:" + JSON.stringify(body));
         const token = localStorage.getItem("authToken");
         console.log("Profile complete:" + token);
+        
         const options = {
             method,
             headers: {
@@ -17,9 +18,18 @@ async function fetchData(pathName, method = 'GET', body = null) {
             },
             body: body ? JSON.stringify(body) : null,
         };
+
         const response = await fetch(url.toString(), options);
+        
+        // Manejar específicamente el error 409
+        if (response.status === 409) {
+            throw new Error('Usuario ya existente');
+        }
+        
+        // Para otros errores HTTP
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.message || `Error en el servidor: ${response.status}`);
         }
 
         const data = await response.json();
@@ -27,7 +37,6 @@ async function fetchData(pathName, method = 'GET', body = null) {
     } catch (error) {
         console.error("Error fetching data:", error);
         throw error;
-
     }
 }
 

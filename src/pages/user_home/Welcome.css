@@ -11,10 +11,12 @@
 
 .hello-player-name {
   font-family: 'Yeseva One';
+  text-align: left;
 }
 
 .hello-player p {
   font-size: 17px;
+  text-align: left;
 }
 
 

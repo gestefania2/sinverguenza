@@ -22,10 +22,10 @@ const Navbar = ({ showLogo = true }) => {  // Añadida la prop showLogo con valo
   const { textColor, setTextColor } = useContext(ColorContext);
 
   const colorOptions = [
-    { name: 'Yellow', value: '#dbb736' },
+    { name: 'Yellow', value: '#FBBF24' },
     { name: 'Blue', value: '#5e17eb' },
     { name: 'Green', value: '#21a41d' },
-    { name: 'Pink', value: '#dc429e' }
+    { name: 'Pink', value: '#e6007e' }
   ];
 
   const toggleMenu = () => {

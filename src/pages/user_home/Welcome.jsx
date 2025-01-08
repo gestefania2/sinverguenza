@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { getPlayer } from '../../api/apiPlayer';
 import AnimatedArrows from '../../components/animations/AnimatedArrows';
 import Navbar from '../../components/navbar/Navbar';
+import { Link } from 'react-router-dom';
 import { ColorContext } from '../../components/navbar/Navbar';
 import './Welcome.css';
 
@@ -39,15 +40,19 @@ const Welcome = () => {
 
                 </div>
             </div>
-
-            <div className="content" style={{ color: textColor }}>
-                <div className="game-text">
-                    <p>¿JUGAMOS</p>
-                    <p>A SER UN POCO</p>
-                    <p>SINVERGÜENZAS?</p>
+            <Link
+                to="/selecciondejugadores"
+                className="no-underline hover:no-underline text-inherit"
+                style={{ textDecoration: 'none' }}
+            >
+                <div className="content cursor-pointer hover:opacity-90 transition-opacity" style={{ color: textColor }}>
+                    <div className="game-text">
+                        <p>¿JUGAMOS</p>
+                        <p>A SER UN POCO</p>
+                        <p>SINVERGÜENZAS?</p>
+                    </div>
                 </div>
-            </div>
-
+            </Link>
             <div className="arrows-container">
                 <AnimatedArrows />
             </div>

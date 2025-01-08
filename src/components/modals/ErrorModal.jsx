@@ -14,7 +14,7 @@ const ErrorModal = ({ isOpen, message, onClose }) => {
                 <div className="modal-body">
                     <p>{message}</p>
                 </div>
-                <button className="modal-button" onClick={onClose}>Aceptar</button>
+                <button className="modal-button" onClick={onClose}>CERRAR</button>
             </div>
         </div>
     );

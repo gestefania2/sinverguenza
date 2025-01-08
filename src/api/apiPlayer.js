@@ -51,16 +51,18 @@ async function register(body) {
             body
         );
 
-        if (!response || !response.success) {
-            throw new Error(response?.message || "Error en el registro");
+        // Verifica si la respuesta tiene un error
+        if (response.error) {
+            throw new Error(response.error);
         }
+
+        return response;
 
     } catch (error) {
         console.error("Error al obtener el registro:", error);
         throw error;
     }
 }
-
 
 async function checkAuthToken() {
     try {

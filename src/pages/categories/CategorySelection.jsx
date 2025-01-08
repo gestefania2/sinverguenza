@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import fetchData from '../../api/apiCategories.js';
 import { categoryColors } from '../../constants/categoryColors.js';
-import { Link } from 'react-router-dom';
 import './CategorySelection.css';
 
 const CategorySelection = ({ playerId = null }) => {
@@ -9,6 +10,8 @@ const CategorySelection = ({ playerId = null }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const [selectedCategory, setSelectedCategory] = useLocalStorage('selectedCategory', null);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -16,8 +19,8 @@ const CategorySelection = ({ playerId = null }) => {
         setIsLoading(true);
         const data = await fetchData("/category/list");
 
-        // Asumiendo que tu API devuelve un array de categorías
         const formattedCategories = data.map(category => ({
+          id: category.id || category.category_id,
           name: category.name || category.category_name,
           description: category.description || category.category_description,
           backgroundColor: category.background_color || category.color || '#000000'
@@ -35,13 +38,32 @@ const CategorySelection = ({ playerId = null }) => {
     fetchCategories();
   }, []);
 
-  const nextSlide = () => {
+  const handleCategorySelect = (e) => {
+    // Evitar la selección si se clickea en los botones de navegación o en el logo
+    if (
+      e.target.classList.contains('carousel-arrow') ||
+      e.target.classList.contains('logo-image') ||
+      e.target.classList.contains('volver-link')
+    ) {
+      return;
+    }
+
+    const currentCategory = categories[currentIndex];
+    if (currentCategory) {
+      setSelectedCategory(currentCategory.id);
+      navigate('/sinverguenza');
+    }
+  };
+
+  const nextSlide = (e) => {
+    e.stopPropagation(); // Evitar que el click se propague al contenedor
     setCurrentIndex((prevIndex) =>
       prevIndex === categories.length - 1 ? 0 : prevIndex + 1
     );
   };
 
-  const prevSlide = () => {
+  const prevSlide = (e) => {
+    e.stopPropagation(); // Evitar que el click se propague al contenedor
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? categories.length - 1 : prevIndex - 1
     );
@@ -74,14 +96,15 @@ const CategorySelection = ({ playerId = null }) => {
   }
 
   return (
-
     <div
       className="carousel-container"
       style={{
-        backgroundColor: categoryColors[categories[currentIndex]?.name.toLowerCase()] || '#000000'
+        backgroundColor: categoryColors[categories[currentIndex]?.name.toLowerCase()] || '#000000',
+        cursor: 'pointer' // Añadimos cursor pointer para indicar que es clickeable
       }}
+      onClick={handleCategorySelect} // Añadimos el click handler al contenedor principal
     >
-      <div className="category-logo">
+      <div className="category-logo" onClick={e => e.stopPropagation()}>
         <Link to="/">
           <img
             src="/logo_blanco_s.png"
@@ -90,6 +113,7 @@ const CategorySelection = ({ playerId = null }) => {
           />
         </Link>
       </div>
+      
       <button
         onClick={prevSlide}
         className="carousel-arrow carousel-arrow-left"
@@ -113,7 +137,12 @@ const CategorySelection = ({ playerId = null }) => {
         <p className="category-description">
           {categories[currentIndex]?.description}
         </p>
-        <Link to="/selecciondejugadores" className="volver-link">
+        
+        <Link 
+          to="/selecciondejugadores" 
+          className="volver-link"
+          onClick={e => e.stopPropagation()} // Evitar que el click se propague
+        >
           volver
         </Link>
       </div>
