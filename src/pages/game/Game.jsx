@@ -16,15 +16,16 @@ const Game = () => {
     const [numberOfPlayers] = useLocalStorage('numberOfPlayers', 3);
     const [displayedAnswers, setDisplayedAnswers] = useState([]);
     const [reserveAnswers, setReserveAnswers] = useState([]);
+    const [selectedAnswers, setSelectedAnswers] = useState([]);
     const [answersGiven, setAnswersGiven] = useState(0);
     const [showEndButtons, setShowEndButtons] = useState(false);
+    const [showingResults, setShowingResults] = useState(false);
 
     const fetchGameData = async () => {
         try {
             setIsLoading(true);
             const data = await getQuestionAndAnswerByCategory(selectedCategory, numberOfPlayers);
-            console.log('Received data:', data);
-            
+
             if (!data || !data.question || !data.answers) {
                 throw new Error('Datos incompletos recibidos de la API');
             }
@@ -34,10 +35,9 @@ const Game = () => {
             setGameData(data);
             setAnswersGiven(0);
             setShowEndButtons(false);
+            setSelectedAnswers([]);
+            setShowingResults(false);
 
-            console.log('Total de respuestas:', data.answers.length);
-            console.log('Respuestas iniciales:', data.answers.slice(0, INITIAL_DISPLAYED_ANSWERS));
-            console.log('Respuestas en reserva:', data.answers.slice(INITIAL_DISPLAYED_ANSWERS));
         } catch (err) {
             console.error('Error al cargar los datos del juego:', err);
             setError(err.message || 'Error al cargar los datos');
@@ -55,8 +55,11 @@ const Game = () => {
     }, [selectedCategory, numberOfPlayers]);
 
     const handleAnswerClick = (selectedAnswer, index) => {
+        // Guardar la respuesta seleccionada
+        setSelectedAnswers(prev => [...prev, selectedAnswer]);
+
         const newDisplayedAnswers = [...displayedAnswers];
-        
+
         if (reserveAnswers.length > 0) {
             const [newAnswer, ...remainingReserves] = reserveAnswers;
             newDisplayedAnswers[index] = newAnswer;
@@ -64,16 +67,15 @@ const Game = () => {
         } else {
             newDisplayedAnswers.splice(index, 1);
         }
-        
+
         setDisplayedAnswers(newDisplayedAnswers);
-        
-        // Incrementar el contador de respuestas dadas
+
         const newAnswersGiven = answersGiven + 1;
         setAnswersGiven(newAnswersGiven);
-        
-        // Mostrar botones cuando todos los jugadores hayan respondido
+
         if (newAnswersGiven >= numberOfPlayers) {
             setShowEndButtons(true);
+            setShowingResults(true);
         }
     };
 
@@ -85,38 +87,32 @@ const Game = () => {
         navigate('/selecciondecategoria');
     };
 
-    if (isLoading) {
-        return (
-            <div className="game-container">
-                <div className="content-wrapper">
-                    <div className="loading-text">Cargando juego...</div>
-                </div>
+    if (isLoading) return (
+        <div className="game-container">
+            <div className="content-wrapper">
+                <div className="loading-text">Cargando juego...</div>
             </div>
-        );
-    }
+        </div>
+    );
 
-    if (error) {
-        return (
-            <div className="game-container">
-                <div className="content-wrapper">
-                    <div className="error-text">Error al cargar el juego: {error}</div>
-                </div>
+    if (error) return (
+        <div className="game-container">
+            <div className="content-wrapper">
+                <div className="error-text">Error al cargar el juego: {error}</div>
             </div>
-        );
-    }
+        </div>
+    );
 
-    if (!gameData) {
-        return (
-            <div className="game-container">
-                <div className="content-wrapper">
-                    <div className="error-text">No hay datos disponibles</div>
-                </div>
+    if (!gameData) return (
+        <div className="game-container">
+            <div className="content-wrapper">
+                <div className="error-text">No hay datos disponibles</div>
             </div>
-        );
-    }
+        </div>
+    );
 
     return (
-        <div 
+        <div
             className="game-container"
             style={{
                 backgroundColor: categoryColors[gameData.question.Category.category_name.toLowerCase()] || '#000000',
@@ -139,28 +135,44 @@ const Game = () => {
                     </div>
                 </div>
                 <div className='response-list'>
+                    <h3 className="responses-title">
+                        {showingResults ? 'Respuestas seleccionadas:' : 'Escoge tu respuesta, apúntala en un papel y clíckala:'}
+                    </h3>
                     <ul className="responses">
-                        {displayedAnswers.map((answer, index) => (
-                            <li 
-                                key={answer.card_id} 
-                                onClick={() => handleAnswerClick(answer, index)}
-                                className="response-item"
-                                style={{ cursor: 'pointer' }}
-                            >
-                                {answer.text}
-                            </li>
-                        ))}
+                        {showingResults ? (
+                            // Mostrar las respuestas seleccionadas
+                            selectedAnswers.map((answer, index) => (
+                                <li
+                                    key={`selected-${answer.card_id}`}
+                                    className="response-item selected"
+                                >
+                                    <span>JUGADOR {index + 1}: </span>{answer.text}
+                                </li>
+                            ))
+                        ) : (
+                            // Mostrar las opciones disponibles
+                            displayedAnswers.map((answer, index) => (
+                                <li
+                                    key={answer.card_id}
+                                    onClick={() => handleAnswerClick(answer, index)}
+                                    className="response-item"
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    {answer.text}
+                                </li>
+                            ))
+                        )}
                     </ul>
                 </div>
                 {showEndButtons && (
                     <div className="end-game-buttons">
-                        <Button 
+                        <Button
                             id="play-again"
                             onClick={handlePlayAgain}
                         >
                             Jugar otra vez
                         </Button>
-                        <Button 
+                        <Button
                             id="change-category"
                             onClick={handleChangeCategory}
                         >

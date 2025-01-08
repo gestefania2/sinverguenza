@@ -1,4 +1,4 @@
-import Button, { handleUpdate, handleDelete } from '../buttons/GenericButton';
+import Button, { handleUpdate, handleDelete } from '../../components/buttons/GenericButton';
 import { useNavigate } from 'react-router-dom';
 
 function PlayerCard({ card_id, type, text, category_name }) {
