@@ -35,7 +35,7 @@ const Welcome = () => {
                     <h1 className='hello-player-name'>hola, {playerData.player_name}</h1>
                     <p style={{ color: textColor }}>
                         Bienvenido/a a Sinvergüenza un juego que no te dejará indiferente... <br />
-                        <span>"NO APTO PARA VERGONZOSOS"</span>
+                        <span>"APTO SOLO PARA PERSONAS CON MUCHO ATREVIMIENTO"</span>
                     </p>
 
                 </div>

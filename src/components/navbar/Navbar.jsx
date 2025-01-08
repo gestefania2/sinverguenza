@@ -1,5 +1,5 @@
 import './Navbar.css';
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
@@ -7,7 +7,17 @@ import { useLocation } from 'react-router-dom';
 export const ColorContext = createContext();
 
 export const ColorProvider = ({ children }) => {
-  const [textColor, setTextColor] = useState('#5e17eb');
+  // Inicializar el estado con el valor guardado en localStorage o el valor por defecto
+  const [textColor, setTextColor] = useState(() => {
+    const savedColor = localStorage.getItem('userColor');
+    return savedColor || '#5e17eb'; // Color azul por defecto si no hay color guardado
+  });
+
+  // Guardar el color en localStorage cada vez que cambie
+  useEffect(() => {
+    localStorage.setItem('userColor', textColor);
+  }, [textColor]);
+
   return (
     <ColorContext.Provider value={{ textColor, setTextColor }}>
       {children}
@@ -15,7 +25,7 @@ export const ColorProvider = ({ children }) => {
   );
 };
 
-const Navbar = ({ showLogo = true }) => {  // Añadida la prop showLogo con valor por defecto true
+const Navbar = ({ showLogo = true }) => {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const isAuthenticated = localStorage.getItem('authToken') !== null;
@@ -35,6 +45,7 @@ const Navbar = ({ showLogo = true }) => {  // Añadida la prop showLogo con valo
   const handleLogout = () => {
     localStorage.removeItem('authToken');
     localStorage.removeItem('authPlayerId');
+    // No eliminamos el color al cerrar sesión para mantenerlo persistente
   };
 
   return (
@@ -74,6 +85,7 @@ const Navbar = ({ showLogo = true }) => {  // Añadida la prop showLogo con valo
               ) : (
                 <>
                   <div className="color-picker menu-section">
+                    <h3 className='color-picker-title'>escoge tu color</h3>
                     <div className="color-options">
                       {colorOptions.map((color) => (
                         <button

@@ -118,9 +118,8 @@
   border-radius: 0;
   width: 100%;
   padding: 10px;
-  border: 1px solid black;
-  background: white;
-  color: black;
+  border: 1px solid rgb(255, 255, 255);
+  color: white;
   text-transform: uppercase;
 }
 
