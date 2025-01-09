@@ -12,4 +12,6 @@ async function getQuestionAndAnswerByCategory(category_id, total_players) {
 
 
 
+
+
 export default getQuestionAndAnswerByCategory;

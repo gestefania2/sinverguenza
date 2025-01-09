@@ -10,6 +10,7 @@ import Welcome from "../pages/user_home/Welcome";
 import ProtectedRoute from "../components/player_profile/ProtectedRoute";
 import Game from "../pages/game/Game";
 import CustomPlayerCards from "../pages/custom_cards/CustomPlayerCards";
+import MyCardsAndCategories from "../pages/cards-categories/MyCardsAndCategories";
 
 const Router = () => {
   return (
@@ -23,20 +24,30 @@ const Router = () => {
           <Route path="/instrucciones" element={<Instructions />} />
           <Route path="/seleccion-de-categoria" element={<CategorySelection />} />
           <Route path="/juego-sinverguenza" element={<Game />} />
-          <Route 
-            path="/mi-perfil" 
+          <Route
+            path="/mi-perfil"
             element={
               <ProtectedRoute>
                 <Welcome />
               </ProtectedRoute>
-            } 
+            }
           />
-          <Route path="/modificar-mis-cartas" 
-          element={
-            <ProtectedRoute>
-              <CustomPlayerCards />
-            </ProtectedRoute>
-          } />
+          <Route
+            path="/mis-cartas-y-categorias"
+            element={   
+              <ProtectedRoute>
+                <MyCardsAndCategories />
+              </ProtectedRoute>
+            }
+          />
+         
+          <Route path="/modificar-mis-cartas"
+            element={
+              <ProtectedRoute>
+                <CustomPlayerCards />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </ColorProvider>
     </BrowserRouter>
