@@ -10,19 +10,23 @@ const AnimatedLogo = ({ size = 'md', onClick, className = '' }) => {
 
   return (
     <div 
-      className={`relative cursor-pointer ${className}`}
+      className={`relative ${sizes[size]} ${className}`}
       onClick={onClick}
     >
-      <img 
-        src="/open-eyes.png"
-        alt="Logo"
-        className={`${sizes[size]} transition-opacity duration-300 absolute top-0 left-0 wink-animation`}
-      />
-      <img 
-        src="/winking.png"
-        alt="Logo winking"
-        className={`${sizes[size]} transition-opacity duration-300 absolute top-0 left-0 wink-animation-reverse`}
-      />
+      <div className="isotipo-container">
+        {/* Logo normal siempre visible */}
+        <img 
+          src="/logonormal.png"
+          alt="isotipo normal"
+          className="isotipo normal"
+        />
+        {/* Logo guiño aparece y desaparece */}
+        <img 
+          src="/logoguino.png"
+          alt="isotipo guiño"
+          className="isotipo wink"
+        />
+      </div>
     </div>
   );
 };

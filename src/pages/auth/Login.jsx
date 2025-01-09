@@ -34,7 +34,7 @@ const Login = () => {
             });
 
             if (token) {
-                navigate('/miperfil');
+                navigate('/mi-perfil');
             } else {
                 showError('Usuario o contraseña incorrectos');
             }

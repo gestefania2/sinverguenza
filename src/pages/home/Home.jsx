@@ -7,7 +7,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/selecciondejugadores');
+    navigate('/seleccion-de-jugadores');
   };
 
   return (

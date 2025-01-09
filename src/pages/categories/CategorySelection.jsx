@@ -51,7 +51,7 @@ const CategorySelection = ({ playerId = null }) => {
     const currentCategory = categories[currentIndex];
     if (currentCategory) {
       setSelectedCategory(currentCategory.id);
-      navigate('/sinverguenza');
+      navigate('/juego-sinverguenza');
     }
   };
 
@@ -139,7 +139,7 @@ const CategorySelection = ({ playerId = null }) => {
         </p>
         
         <Link 
-          to="/selecciondejugadores" 
+          to="/seleccion-de-jugadores" 
           className="volver-link"
           onClick={e => e.stopPropagation()} // Evitar que el click se propague
         >

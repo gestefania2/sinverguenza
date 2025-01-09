@@ -10,7 +10,7 @@ import Navbar from '../../components/navbar/Navbar';
 const Instructions = () => {
     const navigate = useNavigate();
     const handleClick = () => {
-        navigate('/selecciondejugadores');
+        navigate('/seleccion-de-jugadores');
     };
 
     return (

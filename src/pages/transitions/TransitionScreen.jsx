@@ -1,22 +1,19 @@
 import React from 'react';
-import AnimatedLogo from './AnimatedLogo';
+import AnimatedLogo from '../../components/animations/AnimatedLogo';
+import './TransitionScreen.css';
 
 const TransitionScreen = ({ onContinue }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-90 flex flex-col items-center justify-center z-50">
-      <div className="transition-transform hover:scale-105 duration-300">
-        <AnimatedLogo 
-          size="lg"
+    <div className="transition-screen">
+      <div className="transition-content">
+        <AnimatedLogo size="lg" className="transition-logo" />
+        <button 
           onClick={onContinue}
-          className="text-white"
-        />
+          className="continue-button"
+        >
+          Clicka para ver las respuestas
+        </button>
       </div>
-      <button 
-        onClick={onContinue}
-        className="mt-8 text-white text-xl hover:text-gray-300 transition-colors duration-300"
-      >
-        Clicka para ver las respuestas
-      </button>
     </div>
   );
 };

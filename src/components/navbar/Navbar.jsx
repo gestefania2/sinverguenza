@@ -75,7 +75,7 @@ const Navbar = ({ showLogo = true }) => {
                   <Link to="/login" className="menu-item" onClick={toggleMenu}>
                     LOGIN
                   </Link>
-                  <Link to="/selecciondejugadores" className="menu-item" onClick={toggleMenu}>
+                  <Link to="/seleccion-de-jugadores" className="menu-item" onClick={toggleMenu}>
                     JUGAR A SER "SINVERGÜENZA"
                   </Link>
                   <Link to="/instrucciones" className="menu-item" onClick={toggleMenu}>
@@ -98,16 +98,16 @@ const Navbar = ({ showLogo = true }) => {
                       ))}
                     </div>
                   </div>
-                  <Link to="/miperfil" className="menu-item" onClick={toggleMenu}>
+                  <Link to="/mi-perfil" className="menu-item" onClick={toggleMenu}>
                     MI PERFIL
                   </Link>
-                  <Link to="/miscartas" className="menu-item" onClick={toggleMenu}>
+                  <Link to="/mis-cartas" className="menu-item" onClick={toggleMenu}>
                     MIS CARTAS/CATEGORÍAS
                   </Link>
-                  <Link to="/juegomiscartas" className="menu-item" onClick={toggleMenu}>
+                  <Link to="/juego-mis-cartas" className="menu-item" onClick={toggleMenu}>
                     JUGAR "MIS CARTAS"
                   </Link>
-                  <Link to="/selecciondejugadores" className="menu-item" onClick={toggleMenu}>
+                  <Link to="/seleccion-de-jugadores" className="menu-item" onClick={toggleMenu}>
                     JUGAR A SER "SINVERGÜENZA"
                   </Link>
                   <Link to="/instrucciones" className="menu-item" onClick={toggleMenu}>

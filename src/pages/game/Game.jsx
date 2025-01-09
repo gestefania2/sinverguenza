@@ -4,6 +4,7 @@ import Button from '../../components/buttons/GenericButton';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import getQuestionAndAnswerByCategory from '../../api/apiGame.js';
 import { categoryColors } from '../../constants/categoryColors.js';
+import TransitionScreen from '../transitions/TransitionScreen';
 import './Game.css';
 
 const Game = () => {
@@ -17,8 +18,8 @@ const Game = () => {
     const [displayedAnswers, setDisplayedAnswers] = useState([]);
     const [reserveAnswers, setReserveAnswers] = useState([]);
     const [selectedAnswers, setSelectedAnswers] = useState([]);
-    const [answersGiven, setAnswersGiven] = useState(0);
-    const [showEndButtons, setShowEndButtons] = useState(false);
+    const [currentPlayer, setCurrentPlayer] = useState(1);
+    const [showTransition, setShowTransition] = useState(false);
     const [showingResults, setShowingResults] = useState(false);
 
     const fetchGameData = async () => {
@@ -33,10 +34,10 @@ const Game = () => {
             setDisplayedAnswers(data.answers.slice(0, INITIAL_DISPLAYED_ANSWERS));
             setReserveAnswers(data.answers.slice(INITIAL_DISPLAYED_ANSWERS));
             setGameData(data);
-            setAnswersGiven(0);
-            setShowEndButtons(false);
+            setCurrentPlayer(1);
             setSelectedAnswers([]);
             setShowingResults(false);
+            setShowTransition(false);
 
         } catch (err) {
             console.error('Error al cargar los datos del juego:', err);
@@ -70,13 +71,22 @@ const Game = () => {
 
         setDisplayedAnswers(newDisplayedAnswers);
 
-        const newAnswersGiven = answersGiven + 1;
-        setAnswersGiven(newAnswersGiven);
+        // Mostrar pantalla de transición
+        setShowTransition(true);
+    };
 
-        if (newAnswersGiven >= numberOfPlayers) {
-            setShowEndButtons(true);
+    const handleContinue = () => {
+        const nextPlayer = currentPlayer + 1;
+        
+        if (nextPlayer > numberOfPlayers) {
+            // Si todos los jugadores han respondido, mostrar resultados
             setShowingResults(true);
+        } else {
+            // Preparar para el siguiente jugador
+            setCurrentPlayer(nextPlayer);
         }
+        
+        setShowTransition(false);
     };
 
     const handlePlayAgain = () => {
@@ -84,7 +94,7 @@ const Game = () => {
     };
 
     const handleChangeCategory = () => {
-        navigate('/selecciondecategoria');
+        navigate('/seleccion-de-categoria');
     };
 
     if (isLoading) return (
@@ -112,79 +122,89 @@ const Game = () => {
     );
 
     return (
-        <div
-            className="game-container"
-            style={{
-                backgroundColor: categoryColors[gameData.question.Category.category_name.toLowerCase()] || '#000000',
-                color: 'white'
-            }}
-        >
-            <div className="content-wrapper">
-                <div className="game-logo">
-                    <Link to="/">
-                        <img
-                            src="/logo_blanco_s.png"
-                            alt="Sinvergüenza"
-                            className="logo-image"
-                        />
-                    </Link>
-                </div>
-                <div className="question">
-                    <div className="question-title">
-                        {gameData.question.text || ""}
+        <>
+            {showTransition ? (
+                <TransitionScreen onContinue={handleContinue} />
+            ) : (
+                <div
+                    className="game-container"
+                style={{
+                    backgroundColor: categoryColors[gameData.question.Category.category_name.toLowerCase()] || '#000000',
+                    color: 'white'
+                }}
+            >
+                <div className="content-wrapper">
+                    <div className="game-logo">
+                        <Link to="/">
+                            <img
+                                src="/logo_blanco_s.png"
+                                alt="Sinvergüenza"
+                                className="logo-image"
+                            />
+                        </Link>
                     </div>
-                </div>
-                <div className='response-list'>
-                    <h3 className="responses-title">
-                        {showingResults ? 'Respuestas seleccionadas:' : 'Escoge tu respuesta, apúntala en un papel y clíckala:'}
-                    </h3>
-                    <ul className="responses">
-                        {showingResults ? (
-                            // Mostrar las respuestas seleccionadas
-                            selectedAnswers.map((answer, index) => (
-                                <li
-                                    key={`selected-${answer.card_id}`}
-                                    className="response-item selected"
-                                >
-                                    <span>JUGADOR {index + 1}: </span>{answer.text}
-                                </li>
-                            ))
-                        ) : (
-                            // Mostrar las opciones disponibles
-                            displayedAnswers.map((answer, index) => (
-                                <li
-                                    key={answer.card_id}
-                                    onClick={() => handleAnswerClick(answer, index)}
-                                    className="response-item"
-                                    style={{ cursor: 'pointer' }}
-                                >
-                                    {answer.text}
-                                </li>
-                            ))
-                        )}
-                    </ul>
-                </div>
-                {showEndButtons && (
-                    <div className="end-game-buttons">
-                        <Button
-                            id="play-again"
-                            onClick={handlePlayAgain}
-                        >
-                            Jugar otra vez
-                        </Button>
-                        <Button
-                            id="change-category"
-                            onClick={handleChangeCategory}
-                        >
-                            Cambiar categoría
-                        </Button>
+                    <div className="question">
+                        <div className="question-title">
+                            {gameData.question.text || ""}
+                        </div>
                     </div>
-                )}
+                    <div className='response-list'>
+                        <h3 className="responses-title">
+                            {showingResults ? (
+                                'Respuestas seleccionadas:'
+                            ) : (
+                                `Jugador ${currentPlayer}, escoge tu respuesta, apúntala en un papel y clíckala:`
+                            )}
+                        </h3>
+                        <ul className="responses">
+                            {showingResults ? (
+                                // Mostrar las respuestas seleccionadas
+                                selectedAnswers.map((answer, index) => (
+                                    <li
+                                        key={`selected-${answer.card_id}`}
+                                        className="response-item selected"
+                                    >
+                                        <span>JUGADOR {index + 1}: </span>{answer.text}
+                                    </li>
+                                ))
+                            ) : (
+                                // Mostrar las opciones disponibles
+                                displayedAnswers.map((answer, index) => (
+                                    <li
+                                        key={answer.card_id}
+                                        onClick={() => handleAnswerClick(answer, index)}
+                                        className="response-item"
+                                        style={{ cursor: 'pointer' }}
+                                    >
+                                        {answer.text}
+                                    </li>
+                                ))
+                            )}
+                        </ul>
+                    </div>
+                    {showingResults && (
+                        <div className="end-game-buttons">
+                            <Button
+                                id="play-again"
+                                onClick={handlePlayAgain}
+                            >
+                                Jugar otra vez
+                            </Button>
+                            <Button
+                                id="change-category"
+                                onClick={handleChangeCategory}
+                            >
+                                Cambiar categoría
+                            </Button>
+                        </div>
+                    )}
+                </div>
+                <div className="game-footer">
+                    {(gameData.question.Category.category_name || "JUEGO").toUpperCase()}
+                </div>
             </div>
-            <div className="game-footer">
-                {(gameData.question.Category.category_name || "JUEGO").toUpperCase()}
-            </div>
-        </div>
+            )}
+        </>
     );
 };
 

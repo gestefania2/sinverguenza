@@ -49,7 +49,7 @@ const PlayerSelection = () => {
           </div>
           <div className='button-siguiente'>
             <Link 
-              to="/selecciondecategoria" 
+              to="/seleccion-de-categoria" 
               className="next-link"
               onClick={() => {
                 // Aseguramos que el número de jugadores está guardado antes de navegar
