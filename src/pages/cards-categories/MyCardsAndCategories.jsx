@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useModalControl } from '../../hooks/useModalControl.js';
 import CreateModal from '../../components/modals/CreateModal';
 import Navbar from '../../components/navbar/Navbar';
+import { ColorContext } from '../../components/navbar/Navbar';
 import './MyCardsAndCategories.css';
 
 
@@ -14,6 +15,7 @@ const MyCardsAndCategories = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const { modalState, openModal, closeModal } = useModalControl();
   const [showMenu, setShowMenu] = useState(false);
+  const { textColor } = useContext(ColorContext);
 
   useEffect(() => {
     fetchCards();
@@ -22,7 +24,7 @@ const MyCardsAndCategories = () => {
 
   const fetchCards = async () => {
     try {
-      const response = await fetch('/player/card/new');
+      const response = await fetch(`/player/card/new`);
       const data = await response.json();
       setCards({
         questions: data.filter(card => card.type === 'question'),
@@ -35,7 +37,7 @@ const MyCardsAndCategories = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('/player/category/new');
+      const response = await fetch(`/player/category/new`);
       const data = await response.json();
       setCategories(data);
     } catch (error) {
@@ -57,119 +59,132 @@ const MyCardsAndCategories = () => {
     setShowMenu(false);
   };
 
-  const handleModalSuccess = () => {
-    fetchCards();
-    fetchCategories();
-    closeModal();
+  const handleModalSuccess = async () => {
+    try {
+      await fetchCards();
+      await fetchCategories();
+      closeModal();
+    } catch (error) {
+      console.error('Error actualizando datos:', error);
+    }
   };
 
   return (
     <>
-    <Navbar showLogo={false} />
-    <div className="page-container">
-    <div className="categories-section">
-            <h1 className="title">
-                <span style={{ color: '#000000' }}>m</span>
-                <span style={{ color: '#FBBF24' }}>i</span>
-                <span style={{ color: '#000000' }}>s</span>
-                {' '}
-                <span style={{ color: '#000000' }}>c</span>
-                <span style={{ color: '#5e17eb' }}>a</span>
-                <span style={{ color: '#000000' }}>r</span>
-                <span style={{ color: '#5e17eb' }}>t</span>
-                <span style={{ color: '#000000' }}>a</span>
-                <span style={{ color: '#21a41d' }}>s</span>
-                {' '}
-                <span style={{ color: '#000000' }}>y</span>
-                {' '}
-                <span style={{ color: '#000000' }}>c</span>
-                <span style={{ color: '#e6007e' }}>a</span>
-                <span style={{ color: '#000000' }}>t</span>                     
-                <span style={{ color: '#21a41d' }}>e</span>
-                <span style={{ color: '#000000' }}>g</span>
-                <span style={{ color: '#5e17eb' }}>o</span>
-                <span style={{ color: '#000000' }}>r</span>
-                <span style={{ color: '#FBBF24' }}>í</span>
-                <span style={{ color: '#000000' }}>a</span>
-                <span style={{ color: '#e6007e' }}>s</span>
+      <Navbar showLogo={false} />
+      <div className="page-mycardsandcategories-container">
+        <div className="categories-section">
+          <h1 className="title-cards-categories">
+            <span style={{ color: '#000000' }}>m</span>
+            <span style={{ color: '#FBBF24' }}>i</span>
+            <span style={{ color: '#000000' }}>s</span>
+            {' '}
+            <span style={{ color: '#000000' }}>c</span>
+            <span style={{ color: '#5e17eb' }}>a</span>
+            <span style={{ color: '#000000' }}>r</span>
+            <span style={{ color: '#e6007e' }}>t</span>
+            <span style={{ color: '#000000' }}>a</span>
+            <span style={{ color: '#21a41d' }}>s</span>
+            {' '}
+            <span style={{ color: '#000000' }}>y</span>
+            {' '}
+            <span style={{ color: '#000000' }}>c</span>
+            <span style={{ color: '#e6007e' }}>a</span>
+            <span style={{ color: '#000000' }}>t</span>
+            <span style={{ color: '#21a41d' }}>e</span>
+            <span style={{ color: '#000000' }}>g</span>
+            <span style={{ color: '#5e17eb' }}>o</span>
+            <span style={{ color: '#000000' }}>r</span>
+            <span style={{ color: '#FBBF24' }}>í</span>
+            <span style={{ color: '#000000' }}>a</span>
+            <span style={{ color: '#e6007e' }}>s</span>
 
-            </h1>
-        <ul className="categories-list">
-          {categories.map(category => (
-            <li
-              key={category.id}
-              onClick={() => handleCategoryClick(category)}
-              className={`category-item ${selectedCategory?.id === category.id ? 'selected' : ''}`}
-            >
-              {category.category_name}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className="cards-container">
-        <header className="cards-header">
-          <h1>
-            <span className="text-pink">mis</span>{' '}
-            <span className="text-rainbow">cartas</span>
           </h1>
-          <div className="menu-container">
-            <button 
-              onClick={() => setShowMenu(!showMenu)} 
-              className="create-button"
-            >
-              CREAR +
-            </button>
-            {showMenu && (
-              <div className="dropdown-menu">
-                <button 
-                  onClick={() => handleMenuClick('category')} 
-                  className="menu-item"
-                >
-                  NUEVA CATEGORÍA
-                </button>
-                <button 
-                  onClick={() => handleMenuClick('card')} 
-                  className="menu-item"
-                >
-                  NUEVA CARTA
-                </button>
-              </div>
-            )}
+        </div>
+        <div className="menu-container-cards">
+          <button
+            onClick={() => setShowMenu(!showMenu)}
+            className="create-button"
+          >
+            CREAR
+          </button>
+          {showMenu && (
+            <div className="dropdown-menu">
+              <button
+                onClick={() => handleMenuClick('category')}
+                className="menu-item-cards-categories"
+              >
+                NUEVA CATEGORÍA
+              </button>
+              <button
+                onClick={() => handleMenuClick('card')}
+                className="menu-item-cards-categories"
+              >
+                NUEVA CARTA
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div className="categories-container">
+          <header className="categories-header">
+            <h2 style={{ color: textColor }}>categorías</h2>
+          </header>
+          <ul className="categories-list">
+            {categories.map(category => (
+              <li
+                key={category.id}
+                onClick={() => handleCategoryClick(category)}
+                className={`category-item ${selectedCategory?.id === category.id ? 'selected' : ''}`}
+              >
+                {category.category_name}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="cards-container">
+          <header className="cards-header">
+            <h2 style={{ color: textColor }}>cartas</h2>
+          </header>
+          <div className="cards-section">
+            <div className="questions-section">
+              <ul className="cards-list">
+                {filterCardsByCategory(cards.questions).map(card => (
+                  <li key={card.id} className="card-item">
+                    <div className="card-content">
+                      <p>{card.text}</p>
+                      <span className="card-type">Pregunta</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="answers-section">
+              <ul className="cards-list">
+                {filterCardsByCategory(cards.answers).map(card => (
+                  <li key={card.id} className="card-item">
+                    <div className="card-content">
+                      <p>{card.text}</p>
+                      <span className="card-type">Respuesta</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </header>
 
-        <section className="questions-section">
-          <h2 className="section-title">preguntas</h2>
-          <ul className="cards-list">
-            {filterCardsByCategory(cards.questions).map((card, index) => (
-              <li key={`question-${index}`} className="card-item">
-                {card.text}
-              </li>
-            ))}
-          </ul>
-        </section>
 
-        <section className="answers-section">
-          <h2 className="section-title">respuestas</h2>
-          <ul className="cards-list">
-            {filterCardsByCategory(cards.answers).map((card, index) => (
-              <li key={`answer-${index}`} className="card-item">
-                {card.text}
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        {modalState.isOpen && (
-          <CreateModal 
-            type={modalState.type} 
-            onClose={closeModal}
-            onSuccess={handleModalSuccess}
-          />
-        )}
+          {modalState.isOpen && (
+            <CreateModal
+              type={modalState.type}
+              onClose={closeModal}
+              onSuccess={handleModalSuccess}
+            />
+          )}
+        </div>
       </div>
-    </div>
     </>
   );
 };

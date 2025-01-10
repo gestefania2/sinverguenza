@@ -34,14 +34,13 @@ const Welcome = () => {
                 <div className="hello-player">
                     <h1 className='hello-player-name'>hola, {playerData.player_name}</h1>
                     <p style={{ color: textColor }}>
-                        Bienvenido/a a Sinvergüenza un juego que no te dejará indiferente... <br />
+                        Bienvenido/a a Sinvergüenza, un juego que no te dejará indiferente... <br />
                         <span>"APTO SOLO PARA PERSONAS CON MUCHO ATREVIMIENTO"</span>
                     </p>
-
                 </div>
             </div>
             <Link
-                to="/selecciondejugadores"
+                to="/seleccion-de-jugadores"
                 className="no-underline hover:no-underline text-inherit"
                 style={{ textDecoration: 'none' }}
             >

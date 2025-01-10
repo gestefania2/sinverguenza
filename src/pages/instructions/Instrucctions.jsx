@@ -32,16 +32,16 @@ const Instructions = () => {
                         <ul className="instructions-list1">
                             <li className="instruction-item">
                                 El juego se basa en preguntas y respuestas. A los jugadores se os plantea
-                                una carta pregunta aleatoria a la que cada jugador tendreis que contestar con una carta respuesta, se podrá elegir solo una carta respuesta entre 5
+                                una carta pregunta aleatoria a la que cada uno tendréis que contestar con una carta respuesta. Se podrá elegir una sola carta respuesta entre 5
                                 opciones que te da el juego.
                             </li>
                             <li className="instruction-item">
-                                La respuesta escogida se tendrá que apuntar en un papel y despuésclickarla en el
-                                móvil, acto seguido pasaréis el móvil al siguiente jugador,
+                                La respuesta escogida se tendrá que apuntar en un papel y después clickarla en el
+                                móvil. Acto seguido, pasaréis el móvil al siguiente jugador,
                                 así hasta que todos los jugadores hayais respondido. 
                             </li>
                             <li className="instruction-item">
-                                Una vez hayais respondido todos los jugadores tendréis que votar la respuesta ganadora, podreis valorar en función de cual os ha parecido la más loca, graciosa u original.
+                                Una vez hayais respondido todos, tendréis que votar la respuesta ganadora. Podréis valorar en función de cual os ha parecido la más loca, graciosa u original.
                             </li>
                         </ul>
                         <h3 className="subtitle2">
@@ -49,11 +49,11 @@ const Instructions = () => {
                         </h3>
                         <ul className="instructions-list1">
                             <li className="instruction-item">
-                                Antes de empezar tendreis que establecer el turno de juego, para ello
-                                por ejemplo podéis coger dos dados, la suma de la tirada os dará el orden de turno, y sino pues al tun-tún.
+                                Antes de empezar, tendréis que establecer el turno de juego. Para ello, 
+                                podéis coger dos dados, la suma de la tirada os dará el orden de turno, y sino pues al tun-tún.
                             </li>
                             <li className="instruction-item">
-                                El primer jugador será el primero en escoger una carta respuesta de entre las 5 posibles
+                                El primer jugador será el primero en escoger una carta respuesta de entre las 5 posibles.
                             </li>
                             <li className="instruction-item">
                                 Los turnos posteriores, se establecerán en base al ganador.

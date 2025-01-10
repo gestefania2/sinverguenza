@@ -39,11 +39,10 @@ const CategorySelection = ({ playerId = null }) => {
   }, []);
 
   const handleCategorySelect = (e) => {
-    // Evitar la selección si se clickea en los botones de navegación o en el logo
     if (
-      e.target.classList.contains('carousel-arrow') ||
-      e.target.classList.contains('logo-image') ||
-      e.target.classList.contains('volver-link')
+      e.target.className.includes('carousel-arrow') ||
+      e.target.className.includes('logo-image') ||
+      e.target.className.includes('volver-link')
     ) {
       return;
     }

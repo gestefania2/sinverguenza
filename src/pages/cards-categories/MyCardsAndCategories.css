@@ -1,0 +1,134 @@
+@import '../../assets/fonts/fonts.css';
+
+.page-mycardsandcategories-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: white;
+    padding: 2rem;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.categories-section {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.title-cards-categories {
+    font-family: 'Yeseva One';
+    font-size: 30px;
+    text-align: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.menu-container-cards {
+    width: 100%;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.create-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 0px;
+    border-bottom: 1px solid white;
+}
+
+.dropdown-menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    background-color: black;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 10;
+    min-width: 200px;
+}
+
+.menu-item-cards-categories {
+    margin: 0px;
+    display: block;
+    width: 100%;
+    padding: 1rem 1rem;
+    text-align: left;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    white-space: nowrap;
+    color: white;
+    border-bottom: 1px solid white;
+    border-radius: 0px; 
+}
+
+.menu-item:last-child {
+    border-bottom: none;  
+}
+
+.categories-container,
+.cards-container {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.categories-header,
+.cards-header {
+    margin-bottom: 1rem;
+}
+
+.categories-header h2,
+.cards-header h2,
+.section-title {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0;
+    color: black;
+}
+
+.categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.category-item {
+    padding: 0.5rem 0;
+    cursor: pointer;
+    border-bottom: 1px solid #e5e7eb;
+    color: #4b5563;
+}
+
+.category-item:hover {
+    color: #000;
+}
+
+.category-item.selected {
+    font-weight: bold;
+    color: #000;
+}
+
+.cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.card-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #4b5563;
+}
+
+.questions-section,
+.answers-section {
+    margin-top: 2rem;
+}

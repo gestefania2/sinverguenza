@@ -145,7 +145,7 @@ const Game = () => {
                     </div>
                     <div className="question">
                         <div className="question-title">
-                            {gameData.question.text || ""}
+                            "{gameData.question.text || ""}"
                         </div>
                     </div>
                     <div className='response-list'>

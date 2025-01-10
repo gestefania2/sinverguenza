@@ -101,11 +101,8 @@ const Navbar = ({ showLogo = true }) => {
                   <Link to="/mi-perfil" className="menu-item" onClick={toggleMenu}>
                     MI PERFIL
                   </Link>
-                  <Link to="/mis-cartas" className="menu-item" onClick={toggleMenu}>
+                  <Link to="/mis-cartas-y-categorias" className="menu-item" onClick={toggleMenu}>
                     MIS CARTAS/CATEGORÍAS
-                  </Link>
-                  <Link to="/juego-mis-cartas" className="menu-item" onClick={toggleMenu}>
-                    JUGAR "MIS CARTAS"
                   </Link>
                   <Link to="/seleccion-de-jugadores" className="menu-item" onClick={toggleMenu}>
                     JUGAR A SER "SINVERGÜENZA"
