@@ -24,8 +24,22 @@ const MyCardsAndCategories = () => {
 
   const fetchCards = async () => {
     try {
-      const response = await fetch(`/player/card/new`);
-      const data = await response.json();
+      const response = await fetch('/player/card/list', {
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+          'Content-Type': 'application/json'
+        }
+      });
+  
+      console.log('Status:', response.status);
+      const text = await response.text();
+      console.log('Respuesta cruda:', text);
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      const data = JSON.parse(text);
       setCards({
         questions: data.filter(card => card.type === 'question'),
         answers: data.filter(card => card.type === 'answer')
@@ -34,18 +48,27 @@ const MyCardsAndCategories = () => {
       console.error('Error fetching cards:', error);
     }
   };
-
+  
+  
   const fetchCategories = async () => {
     try {
-      const response = await fetch(`/player/category/new`);
+      const response = await fetch('/player/category/list', { 
+        headers: {
+          'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
       setCategories(data);
     } catch (error) {
       console.error('Error fetching categories:', error);
     }
-  };
-
-  const handleCategoryClick = (category) => {
+  };  const handleCategoryClick = (category) => {
     setSelectedCategory(category);
   };
 

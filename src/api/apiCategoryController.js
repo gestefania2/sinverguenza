@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+
 async function createCategory(category_name, category_description) {
   try {
     console.log('Enviando al backend:', { category_name, category_description });
